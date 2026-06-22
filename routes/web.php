@@ -1,6 +1,5 @@
 <?php
 
-Route::redirect('/', '/login');
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));
@@ -63,6 +62,10 @@ Route::resource('distributor-enquiries', 'DistributorEnquiryController', ['excep
 // Contact Enquiries
 Route::delete('contact-enquiries/destroy', 'ContactEnquiryController@massDestroy')->name('contact-enquiries.massDestroy');
 Route::resource('contact-enquiries', 'ContactEnquiryController', ['except' => ['create', 'store', 'edit', 'update']]);
+
+// Website Settings
+Route::get('website-settings', 'WebsiteSettingController@index')->name('website-settings.index');
+Route::put('website-settings', 'WebsiteSettingController@update')->name('website-settings.update');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
@@ -75,8 +78,10 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 });
 
 
-Route::view('/','frontend.index');
+Route::view('/','frontend.index')->name('home');
 
+Route::view('/products', 'frontend.product')->name('products');
+Route::view('/products/detail', 'frontend.product-detail')->name('products.detail');
 Route::get('/technology', [App\Http\Controllers\Frontend\TechPillarController::class, 'index'])->name('technology');
 Route::get('/why-choose-us', [App\Http\Controllers\Frontend\WhychooseController::class, 'index'])->name('whychoose');
 Route::get('/downloads', [App\Http\Controllers\Frontend\DownloadController::class, 'index'])->name('downloads');

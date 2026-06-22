@@ -6,6 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FlyDayz – Premium Sanitary Pads</title>
 
+  <title>{{ $websiteSettings->meta_title ?: $websiteSettings->website_name }}</title>
+  <meta name="description" content="{{ $websiteSettings->meta_description }}">
+  <meta name="keywords" content="{{ $websiteSettings->meta_keywords }}">
+  <meta name="robots" content="{{ $websiteSettings->robots_text ?: 'index, follow' }}">
+  <link rel="icon" href="{{ $websiteSettings->favicon_url }}">
+  <meta property="og:image" content="{{ $websiteSettings->og_image_url }}">
+
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -40,7 +47,7 @@
 
       <!-- LOGO -->
       <div class="preloader-brand">
-        <img src="assets/images/hero/logo.png" alt="FlyDayz Logo" class="preloader-logo">
+        <img src="{{ $websiteSettings->header_logo_url }}" alt="{{ $websiteSettings->website_name }} Logo" class="preloader-logo">
         <!-- <small>Premium Feminine Hygiene</small> -->
       </div>
 
@@ -83,8 +90,8 @@
       <div class="container">
 
         <!-- LOGO -->
-        <a class="navbar-brand myfly-brand" href="index.html">
-          <img src="assets/images/hero/logo.png" alt="MyFlyDayz Logo" class="myfly-logo">
+        <a class="navbar-brand myfly-brand" href="{{ route('home') }}">
+          <img src="{{ $websiteSettings->header_logo_url }}" alt="{{ $websiteSettings->website_name }} Logo" class="myfly-logo">
         </a>
 
         <!-- MOBILE TOGGLE -->
@@ -100,43 +107,43 @@
           <ul class="navbar-nav ms-auto align-items-lg-center myfly-menu">
 
             <li class="nav-item">
-              <a class="nav-link myfly-link active" href="index.html">
+              <a class="nav-link myfly-link active" href="{{ route('home') }}">
                 Home
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link myfly-link" href="all-product.html">
+              <a class="nav-link myfly-link" href="{{ route('products') }}">
                 Products
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link myfly-link" href="technology.html">
+              <a class="nav-link myfly-link" href="{{ route('technology') }}">
                 Technology
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link myfly-link" href="why-us.html">
+              <a class="nav-link myfly-link" href="{{ route('whychoose') }}">
                 Why Us
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link myfly-link" href="Download.html">
+              <a class="nav-link myfly-link" href="{{ route('downloads') }}">
                 Download Catalogue
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link myfly-link" href="certification.html">
+              <a class="nav-link myfly-link" href="{{ route('certificates') }}">
                 Our Certifications
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link myfly-link" href="reviews.html">
+              <a class="nav-link myfly-link" href="{{ route('reviews') }}">
                 Reviews
               </a>
             </li>
@@ -148,13 +155,13 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link myfly-link" href="career.html">
+              <a class="nav-link myfly-link" href="{{ route('careers') }}">
                 Career
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link myfly-link" href="contact.html">
+              <a class="nav-link myfly-link" href="{{ route('contact') }}">
                 Contact
               </a>
             </li>
@@ -163,7 +170,7 @@
 
           <!-- CTA -->
           <div class="myfly-actions">
-            <a class="myfly-main-btn" href="become.html">
+            <a class="myfly-main-btn" href="{{ route('distributor') }}">
               <span>Become a Distributor</span>
               <i class="bi bi-arrow-right-short"></i>
             </a>
@@ -223,16 +230,16 @@
 
       <div class="footer-cta-actions">
 
-        <a class="btn footer-btn-primary" href="tel:7209770033">
+        <a class="btn footer-btn-primary" href="{{ $websiteSettings->phone_url }}">
           <i class="bi bi-telephone-fill"></i>
-          Call 7209770033
+          Call {{ $websiteSettings->primary_phone }}
         </a>
 
         <a
           class="btn footer-btn-whatsapp"
           target="_blank"
           rel="noopener noreferrer"
-          href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20am%20interested%20in%20distributorship."
+          href="{{ $websiteSettings->whatsappUrl('Hi ' . $websiteSettings->website_name . ' Team, I am interested in distributorship.') }}"
         >
           <i class="bi bi-whatsapp"></i>
           WhatsApp
@@ -254,12 +261,12 @@
 
           <a
             class="footer-brand"
-            href="index.html"
+            href="{{ route('home') }}"
             aria-label="FlyDayz Home"
           >
             <img
-              src="assets/images/hero/logo.png"
-              alt="FlyDayz Logo"
+              src="{{ $websiteSettings->footer_logo_url }}"
+              alt="{{ $websiteSettings->website_name }} Logo"
               class="footer-logo"
             >
           </a>
@@ -304,11 +311,11 @@
           </div>
 
           <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="all-product.html">Products</a></li>
-            <li><a href="technology.html">Technology</a></li>
-            <li><a href="why-us.html">Why FlyDayz</a></li>
-            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="{{ route('home') }}">Home</a></li>
+            <li><a href="{{ route('products') }}">Products</a></li>
+            <li><a href="{{ route('technology') }}">Technology</a></li>
+            <li><a href="{{ route('whychoose') }}">Why FlyDayz</a></li>
+            <li><a href="{{ route('reviews') }}">Reviews</a></li>
             <li><a href="faqs.html">FAQs</a></li>
             <li><a href="privacy-policy.html">Privacy</a></li>
             <li><a href="t&c.html">T&amp;C</a></li>
@@ -329,11 +336,11 @@
           </div>
 
           <ul class="footer-links">
-            <li><a href="all-product.html">Regular</a></li>
-            <li><a href="all-product.html">Cotton Soft</a></li>
-            <li><a href="all-product.html">XL</a></li>
-            <li><a href="all-product.html">Overnight</a></li>
-            <li><a href="all-product.html">Pocket Pack</a></li>
+            <li><a href="{{ route('products') }}">Regular</a></li>
+            <li><a href="{{ route('products') }}">Cotton Soft</a></li>
+            <li><a href="{{ route('products') }}">XL</a></li>
+            <li><a href="{{ route('products') }}">Overnight</a></li>
+            <li><a href="{{ route('products') }}">Pocket Pack</a></li>
           </ul>
 
         </div>
@@ -355,7 +362,7 @@
             <!-- CALL -->
             <a
               class="footer-contact-row"
-              href="tel:7209770033"
+              href="{{ $websiteSettings->phone_url }}"
             >
 
               <div class="footer-contact-icon">
@@ -364,7 +371,7 @@
 
               <div class="footer-contact-info">
                 <span>Call Us</span>
-                <strong>7209770033</strong>
+                <strong>{{ $websiteSettings->primary_phone }}</strong>
               </div>
 
               <i class="bi bi-arrow-up-right footer-contact-arrow"></i>
@@ -377,7 +384,7 @@
               class="footer-contact-row"
               target="_blank"
               rel="noopener noreferrer"
-              href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20to%20know%20more%20about%20FlyDayz%20pads."
+              href="{{ $websiteSettings->whatsappUrl('Hi ' . $websiteSettings->website_name . ' Team, I want to know more about your products.') }}"
             >
 
               <div class="footer-contact-icon whatsapp">
@@ -417,7 +424,7 @@
                   class="btn footer-btn-primary"
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20distributorship%20details."
+                  href="{{ $websiteSettings->whatsappUrl('Hi ' . $websiteSettings->website_name . ' Team, I want distributorship details.') }}"
                 >
                   <i class="bi bi-briefcase-fill"></i>
                   Distributorship
@@ -425,7 +432,7 @@
 
                 <a
                   class="btn footer-btn-secondary"
-                  href="contact.html"
+                  href="{{ route('contact') }}"
                 >
                   <i class="bi bi-chat-dots-fill"></i>
                   Enquire
@@ -463,7 +470,7 @@
 
         <a
           class="social-btn"
-          href="tel:7209770033"
+          href="{{ $websiteSettings->phone_url }}"
           aria-label="Call FlyDayz"
         >
           <i class="bi bi-telephone-fill"></i>
@@ -473,11 +480,29 @@
           class="social-btn whatsapp"
           target="_blank"
           rel="noopener noreferrer"
-          href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20to%20know%20more%20about%20FlyDayz%20pads."
+          href="{{ $websiteSettings->whatsappUrl('Hi ' . $websiteSettings->website_name . ' Team, I want to know more about your products.') }}"
           aria-label="WhatsApp FlyDayz"
         >
           <i class="bi bi-whatsapp"></i>
         </a>
+
+        @if($websiteSettings->instagram_url)
+          <a class="social-btn" target="_blank" rel="noopener noreferrer" href="{{ $websiteSettings->instagram_url }}" aria-label="Instagram">
+            <i class="bi bi-instagram"></i>
+          </a>
+        @endif
+
+        @if($websiteSettings->facebook_url)
+          <a class="social-btn" target="_blank" rel="noopener noreferrer" href="{{ $websiteSettings->facebook_url }}" aria-label="Facebook">
+            <i class="bi bi-facebook"></i>
+          </a>
+        @endif
+
+        @if($websiteSettings->linkedin_url)
+          <a class="social-btn" target="_blank" rel="noopener noreferrer" href="{{ $websiteSettings->linkedin_url }}" aria-label="LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+        @endif
 
       </div>
 
@@ -499,7 +524,7 @@
 
   <!-- ===================== FLOATING WHATSAPP BUTTON ===================== -->
   <a class="wa-float" target="_blank"
-    href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20to%20know%20more%20about%20FlyDayz%20pads."
+    href="{{ $websiteSettings->whatsappUrl('Hi ' . $websiteSettings->website_name . ' Team, I want to know more about your products.') }}"
     aria-label="Chat with FlyDayz on WhatsApp">
     <span class="wa-tooltip">Chat on WhatsApp</span>
     <span class="wa-icon">
@@ -510,6 +535,63 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="{{ asset('assets/js/main.js') }}"></script>
+  @php
+    $frontendSettings = [
+      'name' => $websiteSettings->website_name,
+      'phone' => $websiteSettings->primary_phone,
+      'phoneUrl' => $websiteSettings->phone_url,
+      'whatsappUrl' => $websiteSettings->whatsappUrl('Hi ' . $websiteSettings->website_name . ' Team, I need help.'),
+      'logoUrl' => $websiteSettings->header_logo_url,
+      'footerDescription' => $websiteSettings->footer_description,
+      'copyright' => $websiteSettings->copyright_text,
+    ];
+  @endphp
+  <script>
+    window.flydayzSettings = {!! json_encode($frontendSettings, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) !!};
+    window.flydayzRoutes = {
+      'index.html': '{{ route('home') }}',
+      'all-product.html': '{{ route('products') }}',
+      'product-detail.html': '{{ route('products.detail') }}',
+      'technology.html': '{{ route('technology') }}',
+      'why-us.html': '{{ route('whychoose') }}',
+      'Download.html': '{{ route('downloads') }}',
+      'download.html': '{{ route('downloads') }}',
+      'certification.html': '{{ route('certificates') }}',
+      'certificates.html': '{{ route('certificates') }}',
+      'reviews.html': '{{ route('reviews') }}',
+      'Blog.html': '{{ route('blog.index') }}',
+      'career.html': '{{ route('careers') }}',
+      'contact.html': '{{ route('contact') }}',
+      'become.html': '{{ route('distributor') }}'
+    };
+    document.addEventListener('DOMContentLoaded', function () {
+      const settings = window.flydayzSettings;
+      document.querySelectorAll('a[href]').forEach(link => {
+        const href = link.getAttribute('href');
+        const [path, query = ''] = href.split('?');
+        if (window.flydayzRoutes[path]) link.href = window.flydayzRoutes[path] + (query ? '?' + query : '');
+      });
+      document.querySelectorAll('a[href^="tel:"]').forEach(link => link.href = settings.phoneUrl);
+      document.querySelectorAll('a[href*="wa.me/"]').forEach(link => link.href = settings.whatsappUrl);
+      document.querySelectorAll('img[src*="assets/images/hero/logo.png"]').forEach(image => image.src = settings.logoUrl);
+      const footerAbout = document.querySelector('.footer-about');
+      if (footerAbout && settings.footerDescription) footerAbout.textContent = settings.footerDescription;
+      const footerCopy = document.querySelector('.footer-copy');
+      if (footerCopy && settings.copyright) footerCopy.textContent = settings.copyright;
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+      nodes.forEach(node => {
+        if (!['SCRIPT', 'STYLE'].includes(node.parentElement?.tagName)) {
+          node.nodeValue = node.nodeValue.replace(/7209770033/g, settings.phone || '').replace(/917209770033/g, '');
+        }
+      });
+    });
+  </script>
+  @if($websiteSettings->google_analytics_code){!! $websiteSettings->google_analytics_code !!}@endif
+  @if($websiteSettings->google_tag_manager_code){!! $websiteSettings->google_tag_manager_code !!}@endif
+  @if($websiteSettings->facebook_pixel_code){!! $websiteSettings->facebook_pixel_code !!}@endif
+  @if($websiteSettings->schema_json)<script type="application/ld+json">{!! $websiteSettings->schema_json !!}</script>@endif
 
 </body>
 

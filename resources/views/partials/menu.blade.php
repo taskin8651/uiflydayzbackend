@@ -269,14 +269,13 @@
             @endcan
         @endif
 
-        {{-- Settings --}}
-        <a href="#"
-           data-tooltip="Settings"
-           class="nav-link">
-            <i class="fas fa-cog nav-icon"></i>
-            <span class="nav-label">Settings</span>
-        </a>
+    <a href="{{ route('admin.website-settings.index') }}"
+       class="nav-link {{ request()->is('admin/website-settings*') ? 'active' : '' }}"
+       data-tooltip="Website Settings">
 
+        <i class="fas fa-cog nav-icon"></i>
+        <span class="nav-label">Website Settings</span>
+    </a>
     </nav>
 
     {{-- LOGOUT --}}
