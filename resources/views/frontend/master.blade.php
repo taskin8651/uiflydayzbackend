@@ -21,7 +21,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
 
 <body>
@@ -142,7 +142,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link myfly-link" href="Blog.html">
+              <a class="nav-link myfly-link" href="{{ route('blog.index') }}">
                 Blog
               </a>
             </li>
@@ -509,7 +509,7 @@
   <!-- ===================== FLOATING WHATSAPP BUTTON END ===================== -->
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="{{ asset('assets/js/main.js') }}"></script>
 
 </body>
 

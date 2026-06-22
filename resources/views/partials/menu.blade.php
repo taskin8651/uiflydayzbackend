@@ -186,6 +186,13 @@
         </div>
     </div>
 @endcanany
+
+        <a href="{{ route('admin.blog-posts.index') }}"
+           data-tooltip="Blog Articles"
+           class="nav-link {{ request()->is('admin/blog-posts*') ? 'active' : '' }}">
+            <i class="fas fa-book-open nav-icon"></i>
+            <span class="nav-label">Blog Articles</span>
+        </a>
         <div class="nav-divider"></div>
 
         <p class="sidebar-section-title compact nav-label">Account</p>

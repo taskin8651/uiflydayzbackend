@@ -47,6 +47,10 @@ Route::resource('certificate-items', 'CertificateItemController');
 // Review Items
 Route::delete('review-items/destroy', 'ReviewItemController@massDestroy')->name('review-items.massDestroy');
 Route::resource('review-items', 'ReviewItemController');
+
+// Blog posts
+Route::delete('blog-posts/destroy', 'BlogPostController@massDestroy')->name('blog-posts.massDestroy');
+Route::resource('blog-posts', 'BlogPostController')->except('show');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
@@ -66,3 +70,5 @@ Route::get('/why-choose-us', [App\Http\Controllers\Frontend\WhychooseController:
 Route::get('/downloads', [App\Http\Controllers\Frontend\DownloadController::class, 'index'])->name('downloads');
 Route::get('/certificates', [App\Http\Controllers\Frontend\CertificateController::class, 'index'])->name('certificates');
 Route::get('/reviews', [App\Http\Controllers\Frontend\ReviewController::class, 'index'])->name('reviews');
+Route::get('/blog', [App\Http\Controllers\Frontend\BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{blogPost:slug}', [App\Http\Controllers\Frontend\BlogController::class, 'show'])->name('blog.show');
