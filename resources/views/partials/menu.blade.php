@@ -109,11 +109,12 @@
         @endcan
 
        {{-- TECHNOLOGY CONTENT GROUP --}}
-@canany(['tech_pillar_access', 'about_section_access', 'download_item_access'])
+@canany(['tech_pillar_access', 'about_section_access', 'download_item_access', 'certificate_item_access'])
     @php
         $techActive = request()->is('admin/tech-pillars*')
             || request()->is('admin/about-section*')
-            || request()->is('admin/download-items*');
+            || request()->is('admin/download-items*')
+            || request()->is('admin/certificate-items*');
     @endphp
 
     <div x-data="{ open: {{ $techActive ? 'true' : 'false' }} }">
@@ -162,6 +163,14 @@
                    class="sub-link {{ request()->is('admin/download-items*') ? 'active' : '' }}">
                     <i class="fas fa-download"></i>
                     Download Items
+                </a>
+            @endcan
+
+            @can('certificate_item_access')
+                <a href="{{ route('admin.certificate-items.index') }}"
+                   class="sub-link {{ request()->is('admin/certificate-items*') ? 'active' : '' }}">
+                    <i class="fas fa-certificate"></i>
+                    Certificate Items
                 </a>
             @endcan
 

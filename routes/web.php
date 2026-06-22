@@ -39,6 +39,10 @@ Route::put('about-section', 'AboutSectionController@update')->name('about-sectio
 // Download Items
 Route::delete('download-items/destroy', 'DownloadItemController@massDestroy')->name('download-items.massDestroy');
 Route::resource('download-items', 'DownloadItemController');
+
+// Certificate Items
+Route::delete('certificate-items/destroy', 'CertificateItemController@massDestroy')->name('certificate-items.massDestroy');
+Route::resource('certificate-items', 'CertificateItemController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
@@ -56,3 +60,4 @@ Route::view('/','frontend.index');
 Route::get('/technology', [App\Http\Controllers\Frontend\TechPillarController::class, 'index'])->name('technology');
 Route::get('/why-choose-us', [App\Http\Controllers\Frontend\WhychooseController::class, 'index'])->name('whychoose');
 Route::get('/downloads', [App\Http\Controllers\Frontend\DownloadController::class, 'index'])->name('downloads');
+Route::get('/certificates', [App\Http\Controllers\Frontend\CertificateController::class, 'index'])->name('certificates');
