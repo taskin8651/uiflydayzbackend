@@ -51,6 +51,10 @@ Route::resource('review-items', 'ReviewItemController');
 // Blog posts
 Route::delete('blog-posts/destroy', 'BlogPostController@massDestroy')->name('blog-posts.massDestroy');
 Route::resource('blog-posts', 'BlogPostController')->except('show');
+
+// Career Jobs
+Route::delete('career-jobs/destroy', 'CareerJobController@massDestroy')->name('career-jobs.massDestroy');
+Route::resource('career-jobs', 'CareerJobController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
@@ -72,3 +76,5 @@ Route::get('/certificates', [App\Http\Controllers\Frontend\CertificateController
 Route::get('/reviews', [App\Http\Controllers\Frontend\ReviewController::class, 'index'])->name('reviews');
 Route::get('/blog', [App\Http\Controllers\Frontend\BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{blogPost:slug}', [App\Http\Controllers\Frontend\BlogController::class, 'show'])->name('blog.show');
+
+Route::get('/careers', [App\Http\Controllers\Frontend\CareerController::class, 'index'])->name('careers');

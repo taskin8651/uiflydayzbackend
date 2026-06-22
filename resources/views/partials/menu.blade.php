@@ -108,14 +108,14 @@
             </div>
         @endcan
 
-       {{-- TECHNOLOGY CONTENT GROUP --}}
-@canany(['tech_pillar_access', 'about_section_access', 'download_item_access', 'certificate_item_access', 'review_item_access'])
+      @canany(['tech_pillar_access', 'about_section_access', 'download_item_access', 'certificate_item_access', 'review_item_access', 'career_job_access'])
     @php
         $techActive = request()->is('admin/tech-pillars*')
             || request()->is('admin/about-section*')
             || request()->is('admin/download-items*')
             || request()->is('admin/certificate-items*')
-            || request()->is('admin/review-items*');
+            || request()->is('admin/review-items*')
+            || request()->is('admin/career-jobs*');
     @endphp
 
     <div x-data="{ open: {{ $techActive ? 'true' : 'false' }} }">
@@ -180,6 +180,14 @@
                    class="sub-link {{ request()->is('admin/review-items*') ? 'active' : '' }}">
                     <i class="fas fa-star"></i>
                     Review Items
+                </a>
+            @endcan
+
+            @can('career_job_access')
+                <a href="{{ route('admin.career-jobs.index') }}"
+                   class="sub-link {{ request()->is('admin/career-jobs*') ? 'active' : '' }}">
+                    <i class="fas fa-briefcase"></i>
+                    Career Jobs
                 </a>
             @endcan
 
