@@ -32,6 +32,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('tech-pillars/destroy', 'TechPillarController@massDestroy')->name('tech-pillars.massDestroy');
     Route::resource('tech-pillars', 'TechPillarController');
     
+    // About Section
+Route::get('about-section', 'AboutSectionController@index')->name('about-section.index');
+Route::put('about-section', 'AboutSectionController@update')->name('about-section.update');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
@@ -47,3 +50,4 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 Route::view('/','frontend.index');
 
 Route::get('/technology', [App\Http\Controllers\Frontend\TechPillarController::class, 'index'])->name('technology');
+Route::get('/why-choose-us', [App\Http\Controllers\Frontend\WhychooseController::class, 'index'])->name('whychoose');

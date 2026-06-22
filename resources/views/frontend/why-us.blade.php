@@ -1,166 +1,8 @@
-<!doctype html>
-<html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Why Choose FlyDayz – Premium Comfort & Protection</title>
-  <meta name="description"
-    content="Discover why women choose FlyDayz for soft comfort, fast absorption, hygienic care, secure protection and smart value.">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/why-us.css">
-</head>
 
-<body><!-- ===================== FLYDAYZ PREMIUM PRELOADER ===================== -->
-  <div id="flydayzPreloader" class="flydayz-preloader" aria-label="FlyDayz loading screen">
-    <div class="preloader-bg-glow glow-one"></div>
-    <div class="preloader-bg-glow glow-two"></div>
 
-    <img src="assets/images/decor/cotton-1.png" class="preloader-decor preloader-cotton cotton-a" alt="">
-    <img src="assets/images/decor/cotton-2.png" class="preloader-decor preloader-cotton cotton-b" alt="">
-    <img src="assets/images/decor/petal-1.png" class="preloader-decor preloader-petal petal-a" alt="">
-    <img src="assets/images/decor/petal-2.png" class="preloader-decor preloader-petal petal-b" alt="">
-
-    <div class="preloader-card">
-
-      <!-- LOGO -->
-      <div class="preloader-brand">
-        <img src="assets/images/hero/logo.png" alt="FlyDayz Logo" class="preloader-logo">
-        <!-- <small>Premium Feminine Hygiene</small> -->
-      </div>
-
-      <!-- REAL PAD IMAGE -->
-      <div class="pad-loader" aria-hidden="true">
-        <div class="pad-image-wrap">
-
-          <div class="pad-loader-glow"></div>
-
-          <img src="assets/images/decor/pad-outline-1.png" alt="" class="preloader-pad-img">
-
-          <span class="absorb-dot dot-1"></span>
-          <span class="absorb-dot dot-2"></span>
-          <span class="absorb-dot dot-3"></span>
-          <span class="absorb-dot dot-4"></span>
-          <span class="absorb-dot dot-5"></span>
-
-          <div class="pad-shine"></div>
-        </div>
-      </div>
-
-      <div class="preloader-text">
-        <strong>Preparing comfort for you</strong>
-        <span>Soft care • Fresh feel • Secure protection</span>
-      </div>
-
-      <div class="preloader-progress">
-        <span></span>
-      </div>
-
-    </div>
-  </div>
-  <!-- ===================== FLYDAYZ PREMIUM PRELOADER END ===================== --><!-- 
-   
-  
-  ===================== MYFLYDAYZ PREMIUM HEADER ===================== -->
-  <header class="myfly-header">
-    <nav class="navbar navbar-expand-lg myfly-navbar">
-      <div class="container">
-
-        <!-- LOGO -->
-        <a class="navbar-brand myfly-brand" href="index.html">
-          <img src="assets/images/hero/logo.png" alt="MyFlyDayz Logo" class="myfly-logo">
-        </a>
-
-        <!-- MOBILE TOGGLE -->
-        <button class="navbar-toggler myfly-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
-          aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
-        <!-- MENU -->
-        <div id="mainNav" class="collapse navbar-collapse myfly-menu-wrap">
-          <ul class="navbar-nav ms-auto align-items-lg-center myfly-menu">
-
-            <li class="nav-item">
-              <a class="nav-link myfly-link" href="index.html">
-                Home
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link myfly-link" href="all-product.html">
-                Products
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link myfly-link" href="technology.html">
-                Technology
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link myfly-link active" href="why-us.html">
-                Why Us
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link myfly-link" href="Download.html">
-                Download Catalogue
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link myfly-link" href="certification.html">
-                Our Certifications
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link myfly-link" href="reviews.html">
-                Reviews
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link myfly-link" href="Blog.html">
-                Blog
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link myfly-link" href="career.html">
-                Career
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link myfly-link" href="contact.html">
-                Contact
-              </a>
-            </li>
-
-          </ul>
-
-          <!-- CTA -->
-          <div class="myfly-actions">
-            <a class="myfly-main-btn" href="become.html">
-              <span>Become a Distributor</span>
-              <i class="bi bi-arrow-right-short"></i>
-            </a>
-          </div>
-
-        </div>
-
-      </div>
-    </nav>
-  </header>
+@extends('frontend.master')
+@section('content')
 
   <!-- ===================== MYFLYDAYZ PREMIUM HEADER END ===================== -->
   <section class="wy-hero" id="home">
@@ -261,28 +103,30 @@
           </div>
           <div class="wy-five-badge"><strong>5</strong><span>Benefits<br>One Pack</span></div>
         </div>
-        <div class="wy-five-grid">
-          <article class="wy-five-card"><img src="assets/images/ICON-1.png" alt="Fragrance Free">
-            <h3>Fragrance Free</h3>
-            <p>Gentle care without added fragrance.</p>
-          </article>
-          <article class="wy-five-card"><img src="assets/images/ICON-2.png" alt="Longer and Wider Wings">
-            <h3>Longer & Wider Wings</h3>
-            <p>Better grip and improved side coverage.</p>
-          </article>
-          <article class="wy-five-card active"><img src="assets/images/ICON3.png" alt="3X Absorption">
-            <h3>3X Absorption</h3>
-            <p>Quick absorption support for a dry feel.</p>
-          </article>
-          <article class="wy-five-card"><img src="assets/images/ICON4.png" alt="Medical Grade Topsheet">
-            <h3>Medical-Grade Topsheet</h3>
-            <p>Non-printed, hygiene-focused top layer.</p>
-          </article>
-          <article class="wy-five-card"><img src="assets/images/ICON5.png" alt="Prevents Odour">
-            <h3>Odour Protection</h3>
-            <p>Freshness support for active routines.</p>
-          </article>
-        </div>
+      @if($techPillars->count())
+    <div class="wy-five-grid">
+
+        @foreach($techPillars as $pillar)
+            <article class="wy-five-card {{ $pillar->is_featured ? 'active' : '' }}">
+
+                <img src="{{ $pillar->getFirstMediaUrl('tech_pillar_icon') ?: asset('assets/images/default-icon.png') }}"
+                     alt="{{ $pillar->icon_alt ?: $pillar->title }}">
+
+                <h3>{{ $pillar->title }}</h3>
+
+                @if($pillar->description)
+                    <p>{{ $pillar->description }}</p>
+                @endif
+
+            </article>
+        @endforeach
+
+    </div>
+@else
+    <div class="text-center py-4">
+        <p class="mb-0">No features found.</p>
+    </div>
+@endif
       </div>
     </div>
   </section>
@@ -306,210 +150,206 @@
 
     <div class="container position-relative">
 
-      <div class="row align-items-center g-4 g-xl-5">
+     @php
+    $aboutImage = optional($aboutSection)->getFirstMediaUrl('about_section_image');
+@endphp
 
-        <!-- LEFT VISUAL -->
-        <div class="col-lg-6">
-          <div class="about-visual">
+<div class="row align-items-center g-4 g-xl-5">
+
+    <!-- LEFT VISUAL -->
+    <div class="col-lg-6">
+        <div class="about-visual">
 
             <div class="about-visual-ring ring-one"></div>
             <div class="about-visual-ring ring-two"></div>
 
             <div class="about-product-card">
 
-              <div class="about-product-top">
-                <span class="about-mini-badge">
-                  <i class="bi bi-patch-check-fill"></i>
-                  Premium Feminine Care
-                </span>
+                <div class="about-product-top">
+                    <span class="about-mini-badge">
+                        <i class="bi bi-patch-check-fill"></i>
+                        Premium Feminine Care
+                    </span>
 
-                <span class="about-product-status">
-                  <span></span>
-                  Trusted Protection
-                </span>
-              </div>
-
-              <div class="about-product-stage">
-                <div class="about-product-halo"></div>
-
-                <img src="assets/images/products/product.png" class="about-product-img"
-                  alt="FlyDayz Premium Sanitary Pads">
-              </div>
-
-              <div class="about-product-features">
-
-                <div class="about-product-feature">
-                  <div class="about-feature-icon">
-                    <i class="bi bi-cloud"></i>
-                  </div>
-                  <div>
-                    <strong>Ultra Soft</strong>
-                    <span>Comfortable topsheet</span>
-                  </div>
+                    <span class="about-product-status">
+                        <span></span>
+                        Trusted Protection
+                    </span>
                 </div>
 
-                <div class="about-product-feature">
-                  <div class="about-feature-icon">
-                    <i class="bi bi-droplet-half"></i>
-                  </div>
-                  <div>
-                    <strong>Gel Lock</strong>
-                    <span>Fast absorption</span>
-                  </div>
+                <div class="about-product-stage">
+                    <div class="about-product-halo"></div>
+
+                    <img src="{{ $aboutImage ?: asset('assets/images/products/product.png') }}"
+                         class="about-product-img"
+                         alt="{{ optional($aboutSection)->title ?: 'FlyDayz Premium Sanitary Pads' }}">
                 </div>
 
-                <div class="about-product-feature">
-                  <div class="about-feature-icon">
-                    <i class="bi bi-shield-check"></i>
-                  </div>
-                  <div>
-                    <strong>Leak Guard</strong>
-                    <span>Reliable protection</span>
-                  </div>
-                </div>
+                <div class="about-product-features">
 
-              </div>
+                    <div class="about-product-feature">
+                        <div class="about-feature-icon">
+                            <i class="bi bi-cloud"></i>
+                        </div>
+                        <div>
+                            <strong>Ultra Soft</strong>
+                            <span>Comfortable topsheet</span>
+                        </div>
+                    </div>
+
+                    <div class="about-product-feature">
+                        <div class="about-feature-icon">
+                            <i class="bi bi-droplet-half"></i>
+                        </div>
+                        <div>
+                            <strong>Gel Lock</strong>
+                            <span>Fast absorption</span>
+                        </div>
+                    </div>
+
+                    <div class="about-product-feature">
+                        <div class="about-feature-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <div>
+                            <strong>Leak Guard</strong>
+                            <span>Reliable protection</span>
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
 
-            <!-- Floating cards -->
             <div class="about-floating-card about-floating-card-one">
-              <div class="about-floating-icon">
-                <i class="bi bi-heart-pulse-fill"></i>
-              </div>
-              <div>
-                <strong>Women First</strong>
-                <span>Comfort-led design</span>
-              </div>
+                <div class="about-floating-icon">
+                    <i class="bi bi-heart-pulse-fill"></i>
+                </div>
+                <div>
+                    <strong>Women First</strong>
+                    <span>Comfort-led design</span>
+                </div>
             </div>
 
             <div class="about-floating-card about-floating-card-two">
-              <div class="about-floating-icon">
-                <i class="bi bi-stars"></i>
-              </div>
-              <div>
-                <strong>Premium Feel</strong>
-                <span>Everyday confidence</span>
-              </div>
+                <div class="about-floating-icon">
+                    <i class="bi bi-stars"></i>
+                </div>
+                <div>
+                    <strong>Premium Feel</strong>
+                    <span>Everyday confidence</span>
+                </div>
             </div>
 
-          </div>
         </div>
+    </div>
 
-        <!-- RIGHT CONTENT -->
-        <div class="col-lg-6">
-          <div class="about-content">
+    <!-- RIGHT CONTENT -->
+    <div class="col-lg-6">
+        <div class="about-content">
 
             <div class="badge-chip about-kicker">
-              <i class="bi bi-heart-fill"></i>
-              About FlyDayz
+                <i class="bi bi-heart-fill"></i>
+                About FlyDayz
             </div>
 
             <h2 class="about-title">
-              Comfort Made Personal.
-              <span class="brand-grad">Protection Made Powerful.</span>
+                {{ optional($aboutSection)->title ?: 'Comfort Made Personal. Protection Made Powerful.' }}
             </h2>
 
             <p class="about-lead">
-              FlyDayz is a modern feminine hygiene brand focused on creating sanitary
-              pads that combine softness, reliable absorption and secure leak protection.
-              Every product is thoughtfully designed to help women feel comfortable,
-              fresh and confident through every part of the day.
+                {{ optional($aboutSection)->short_description ?: 'FlyDayz is a modern feminine hygiene brand focused on creating sanitary pads that combine softness, reliable absorption and secure leak protection.' }}
             </p>
 
             <p class="about-description">
-              From active mornings to peaceful nights, our goal is to deliver hygienic
-              protection that feels gentle on the skin while providing dependable
-              performance when it matters most.
+                {{ optional($aboutSection)->description ?: 'From active mornings to peaceful nights, our goal is to deliver hygienic protection that feels gentle on the skin while providing dependable performance when it matters most.' }}
             </p>
 
             <div class="about-highlight-grid">
 
-              <div class="about-highlight-card">
-                <div class="about-highlight-icon">
-                  <i class="bi bi-gem"></i>
+                <div class="about-highlight-card">
+                    <div class="about-highlight-icon">
+                        <i class="bi bi-gem"></i>
+                    </div>
+                    <div>
+                        <h3>Premium Quality</h3>
+                        <p>Carefully selected materials and modern production standards.</p>
+                    </div>
                 </div>
-                <div>
-                  <h3>Premium Quality</h3>
-                  <p>Carefully selected materials and modern production standards.</p>
-                </div>
-              </div>
 
-              <div class="about-highlight-card">
-                <div class="about-highlight-icon">
-                  <i class="bi bi-flower1"></i>
+                <div class="about-highlight-card">
+                    <div class="about-highlight-icon">
+                        <i class="bi bi-flower1"></i>
+                    </div>
+                    <div>
+                        <h3>Skin-Friendly Comfort</h3>
+                        <p>Soft-touch protection created for everyday feminine care.</p>
+                    </div>
                 </div>
-                <div>
-                  <h3>Skin-Friendly Comfort</h3>
-                  <p>Soft-touch protection created for everyday feminine care.</p>
-                </div>
-              </div>
 
-              <div class="about-highlight-card">
-                <div class="about-highlight-icon">
-                  <i class="bi bi-shield-plus"></i>
+                <div class="about-highlight-card">
+                    <div class="about-highlight-icon">
+                        <i class="bi bi-shield-plus"></i>
+                    </div>
+                    <div>
+                        <h3>Reliable Protection</h3>
+                        <p>Designed for dependable absorption and better leak control.</p>
+                    </div>
                 </div>
-                <div>
-                  <h3>Reliable Protection</h3>
-                  <p>Designed for dependable absorption and better leak control.</p>
-                </div>
-              </div>
 
-              <div class="about-highlight-card">
-                <div class="about-highlight-icon">
-                  <i class="bi bi-people"></i>
+                <div class="about-highlight-card">
+                    <div class="about-highlight-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <div>
+                        <h3>Growing Partner Network</h3>
+                        <p>Building availability through retailers and distributors.</p>
+                    </div>
                 </div>
-                <div>
-                  <h3>Growing Partner Network</h3>
-                  <p>Building availability through retailers and distributors.</p>
-                </div>
-              </div>
 
             </div>
 
-            <!-- Statistics -->
             <div class="about-stats">
 
-              <div class="about-stat">
-                <strong>5 in 1</strong>
-                <span>Protection</span>
-              </div>
+                <div class="about-stat">
+                    <strong>5 in 1</strong>
+                    <span>Protection</span>
+                </div>
 
-              <div class="about-stat">
-                <strong>3X</strong>
-                <span>Absorption</span>
-              </div>
+                <div class="about-stat">
+                    <strong>3X</strong>
+                    <span>Absorption</span>
+                </div>
 
-              <div class="about-stat">
-                <strong>12 Hr</strong>
-                <span>Protection</span>
-              </div>
+                <div class="about-stat">
+                    <strong>12 Hr</strong>
+                    <span>Protection</span>
+                </div>
 
-              <div class="about-stat">
-                <strong>100%</strong>
-                <span>Comfort Focus</span>
-              </div>
+                <div class="about-stat">
+                    <strong>100%</strong>
+                    <span>Comfort Focus</span>
+                </div>
 
             </div>
 
-            <!-- CTA -->
             <div class="about-actions">
-              <a class="btn btn-brand" href="#products">
-                <i class="bi bi-bag-heart me-2"></i>
-                Explore Products
-              </a>
+                <a class="btn btn-brand" href="#products">
+                    <i class="bi bi-bag-heart me-2"></i>
+                    Explore Products
+                </a>
 
-              <a class="btn btn-outline-dark" target="_blank"
-                href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20to%20know%20more%20about%20FlyDayz.">
-                <i class="bi bi-whatsapp me-2"></i>
-                Connect With Us
-              </a>
+                <a class="btn btn-outline-dark" target="_blank"
+                   href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20to%20know%20more%20about%20FlyDayz.">
+                    <i class="bi bi-whatsapp me-2"></i>
+                    Connect With Us
+                </a>
             </div>
 
-          </div>
         </div>
+    </div>
 
-      </div>
+</div>
 
       <!-- Bottom trust strip -->
       <div class="about-trust-strip">
@@ -687,336 +527,4 @@
       </div>
     </div>
   </section>
-
-<!-- ===================== FLYDAYZ ULTRA PREMIUM FOOTER ===================== -->
-<footer class="footer-premium">
-
-  <!-- BACKGROUND DECORATION -->
-  <div class="footer-bg-layer"></div>
-  <div class="footer-bg-pattern"></div>
-
-  <div class="footer-bg-glow footer-glow-one"></div>
-  <div class="footer-bg-glow footer-glow-two"></div>
-  <div class="footer-bg-glow footer-glow-three"></div>
-
-  <div class="container position-relative">
-
-    <!-- ===================== TOP CTA ===================== -->
-    <div class="footer-top-cta">
-
-      <div class="footer-cta-left">
-
-        <div class="footer-cta-icon">
-          <i class="bi bi-briefcase"></i>
-        </div>
-
-        <div class="footer-cta-content">
-
-          <div class="footer-cta-kicker">
-            Business Partnership
-          </div>
-
-          <h3>Distributorship & Bulk Orders</h3>
-
-          <p>
-            Connect with the FlyDayz team for partnership, retail supply,
-            bulk orders and product availability.
-          </p>
-
-        </div>
-
-      </div>
-
-      <div class="footer-cta-actions">
-
-        <a class="btn footer-btn-primary" href="tel:7209770033">
-          <i class="bi bi-telephone-fill"></i>
-          Call 7209770033
-        </a>
-
-        <a
-          class="btn footer-btn-whatsapp"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20am%20interested%20in%20distributorship."
-        >
-          <i class="bi bi-whatsapp"></i>
-          WhatsApp
-        </a>
-
-      </div>
-
-    </div>
-    <!-- ===================== TOP CTA END ===================== -->
-
-
-    <!-- ===================== MAIN FOOTER GRID ===================== -->
-    <div class="row g-4 g-xl-5 footer-grid">
-
-      <!-- BRAND -->
-      <div class="col-md-6 col-lg-4">
-
-        <div class="footer-brand-column">
-
-          <a
-            class="footer-brand"
-            href="index.html"
-            aria-label="FlyDayz Home"
-          >
-            <img
-              src="assets/images/hero/logo.png"
-              alt="FlyDayz Logo"
-              class="footer-logo"
-            >
-          </a>
-
-          <p class="footer-about">
-            FlyDayz is built for modern comfort — soft on skin,
-            strong on protection. Premium hygienic care designed
-            to keep women fresh, confident and worry-free.
-          </p>
-
-          <div class="footer-trust-badges">
-
-            <span>
-              <i class="bi bi-cloud-check-fill"></i>
-              Cotton Soft
-            </span>
-
-            <span>
-              <i class="bi bi-droplet-half"></i>
-              Gel Lock
-            </span>
-
-            <span>
-              <i class="bi bi-shield-plus"></i>
-              Leak Control
-            </span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- QUICK LINKS -->
-      <div class="col-6 col-md-3 col-lg-2">
-
-        <div class="footer-column">
-
-          <div class="footer-title">
-            Quick Links
-          </div>
-
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="all-product.html">Products</a></li>
-            <li><a href="technology.html">Technology</a></li>
-            <li><a href="why-us.html">Why FlyDayz</a></li>
-            <li><a href="reviews.html">Reviews</a></li>
-            <li><a href="faqs.html">FAQs</a></li>
-            <li><a href="privacy-policy.html">Privacy</a></li>
-            <li><a href="t&c.html">T&amp;C</a></li>
-          </ul>
-
-        </div>
-
-      </div>
-
-
-      <!-- PRODUCTS -->
-      <div class="col-6 col-md-3 col-lg-2">
-
-        <div class="footer-column">
-
-          <div class="footer-title">
-            Products
-          </div>
-
-          <ul class="footer-links">
-            <li><a href="all-product.html">Regular</a></li>
-            <li><a href="all-product.html">Cotton Soft</a></li>
-            <li><a href="all-product.html">XL</a></li>
-            <li><a href="all-product.html">Overnight</a></li>
-            <li><a href="all-product.html">Pocket Pack</a></li>
-          </ul>
-
-        </div>
-
-      </div>
-
-
-      <!-- CONTACT -->
-      <div class="col-md-6 col-lg-4">
-
-        <div class="footer-column">
-
-          <div class="footer-title">
-            Contact &amp; Support
-          </div>
-
-          <div class="footer-contact-box">
-
-            <!-- CALL -->
-            <a
-              class="footer-contact-row"
-              href="tel:7209770033"
-            >
-
-              <div class="footer-contact-icon">
-                <i class="bi bi-telephone-fill"></i>
-              </div>
-
-              <div class="footer-contact-info">
-                <span>Call Us</span>
-                <strong>7209770033</strong>
-              </div>
-
-              <i class="bi bi-arrow-up-right footer-contact-arrow"></i>
-
-            </a>
-
-
-            <!-- WHATSAPP -->
-            <a
-              class="footer-contact-row"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20to%20know%20more%20about%20FlyDayz%20pads."
-            >
-
-              <div class="footer-contact-icon whatsapp">
-                <i class="bi bi-whatsapp"></i>
-              </div>
-
-              <div class="footer-contact-info">
-                <span>WhatsApp Support</span>
-                <strong>Chat with us</strong>
-              </div>
-
-              <i class="bi bi-arrow-up-right footer-contact-arrow"></i>
-
-            </a>
-
-
-            <!-- DISTRIBUTOR CARD -->
-            <div class="footer-distributor-card">
-
-              <div class="footer-distributor-decoration"></div>
-
-              <div class="footer-distributor-badge">
-                <i class="bi bi-shop-window"></i>
-                Partner Enquiry
-              </div>
-
-              <h4>Looking for distributorship?</h4>
-
-              <p>
-                Message us for margins, onboarding,
-                availability and bulk-supply details.
-              </p>
-
-              <div class="footer-distributor-actions">
-
-                <a
-                  class="btn footer-btn-primary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20distributorship%20details."
-                >
-                  <i class="bi bi-briefcase-fill"></i>
-                  Distributorship
-                </a>
-
-                <a
-                  class="btn footer-btn-secondary"
-                  href="contact.html"
-                >
-                  <i class="bi bi-chat-dots-fill"></i>
-                  Enquire
-                </a>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-    <!-- ===================== MAIN FOOTER GRID END ===================== -->
-
-
-    <!-- ===================== FOOTER BOTTOM ===================== -->
-    <div class="footer-bottom">
-
-      <div class="footer-copy">
-        © <span id="footerYear">2026</span> FlyDayz.
-        All Rights Reserved.
-      </div>
-
-      <div class="footer-visitor">
-        <i class="bi bi-eye-fill"></i>
-        <span>Total Visitors :</span>
-        <strong id="visitorCount">000000</strong>
-      </div>
-
-      <div class="footer-social">
-
-        <a
-          class="social-btn"
-          href="tel:7209770033"
-          aria-label="Call FlyDayz"
-        >
-          <i class="bi bi-telephone-fill"></i>
-        </a>
-
-        <a
-          class="social-btn whatsapp"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20to%20know%20more%20about%20FlyDayz%20pads."
-          aria-label="WhatsApp FlyDayz"
-        >
-          <i class="bi bi-whatsapp"></i>
-        </a>
-
-      </div>
-
-    </div>
-    <!-- ===================== FOOTER BOTTOM END ===================== -->
-
-  </div>
-
-</footer>
-<!-- ===================== FLYDAYZ ULTRA PREMIUM FOOTER END ===================== -->
-
-
-
-  <!-- ===================== BACK TO TOP BUTTON ===================== -->
-  <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">
-    <i class="bi bi-arrow-up"></i>
-  </button>
-  <!-- ===================== BACK TO TOP BUTTON END ===================== -->
-
-  <!-- ===================== FLOATING WHATSAPP BUTTON ===================== -->
-  <a class="wa-float" target="_blank"
-    href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20to%20know%20more%20about%20FlyDayz%20pads."
-    aria-label="Chat with FlyDayz on WhatsApp">
-    <span class="wa-tooltip">Chat on WhatsApp</span>
-    <span class="wa-icon">
-      <i class="bi bi-whatsapp"></i>
-    </span>
-  </a>
-  <!-- ===================== FLOATING WHATSAPP BUTTON END ===================== -->
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
-
-</body>
-
-</html>
+@endsection

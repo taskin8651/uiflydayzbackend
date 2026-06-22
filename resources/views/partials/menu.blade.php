@@ -108,10 +108,11 @@
             </div>
         @endcan
 
-        {{-- TECHNOLOGY CONTENT GROUP --}}
-@can('tech_pillar_access')
+       {{-- TECHNOLOGY CONTENT GROUP --}}
+@canany(['tech_pillar_access', 'about_section_access'])
     @php
-        $techActive = request()->is('admin/tech-pillars*');
+        $techActive = request()->is('admin/tech-pillars*')
+            || request()->is('admin/about-section*');
     @endphp
 
     <div x-data="{ open: {{ $techActive ? 'true' : 'false' }} }">
@@ -139,6 +140,14 @@
              x-transition:leave-start="opacity-100 translate-y-0"
              x-transition:leave-end="opacity-0 -translate-y-1">
 
+            @can('about_section_access')
+                <a href="{{ route('admin.about-section.index') }}"
+                   class="sub-link {{ request()->is('admin/about-section*') ? 'active' : '' }}">
+                    <i class="fas fa-info-circle"></i>
+                    About Section
+                </a>
+            @endcan
+
             @can('tech_pillar_access')
                 <a href="{{ route('admin.tech-pillars.index') }}"
                    class="sub-link {{ request()->is('admin/tech-pillars*') ? 'active' : '' }}">
@@ -149,8 +158,7 @@
 
         </div>
     </div>
-@endcan
-
+@endcanany
         <div class="nav-divider"></div>
 
         <p class="sidebar-section-title compact nav-label">Account</p>
