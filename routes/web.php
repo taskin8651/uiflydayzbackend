@@ -55,6 +55,14 @@ Route::resource('blog-posts', 'BlogPostController')->except('show');
 // Career Jobs
 Route::delete('career-jobs/destroy', 'CareerJobController@massDestroy')->name('career-jobs.massDestroy');
 Route::resource('career-jobs', 'CareerJobController');
+
+// Distributor Enquiries
+Route::delete('distributor-enquiries/destroy', 'DistributorEnquiryController@massDestroy')->name('distributor-enquiries.massDestroy');
+Route::resource('distributor-enquiries', 'DistributorEnquiryController', ['except' => ['create', 'store', 'edit', 'update']]);
+
+// Contact Enquiries
+Route::delete('contact-enquiries/destroy', 'ContactEnquiryController@massDestroy')->name('contact-enquiries.massDestroy');
+Route::resource('contact-enquiries', 'ContactEnquiryController', ['except' => ['create', 'store', 'edit', 'update']]);
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
@@ -78,3 +86,9 @@ Route::get('/blog', [App\Http\Controllers\Frontend\BlogController::class, 'index
 Route::get('/blog/{blogPost:slug}', [App\Http\Controllers\Frontend\BlogController::class, 'show'])->name('blog.show');
 
 Route::get('/careers', [App\Http\Controllers\Frontend\CareerController::class, 'index'])->name('careers');
+
+Route::get('/distributors', [App\Http\Controllers\Frontend\DistributorEnquiryController::class, 'index'])->name('distributor');
+Route::post('distributor-enquiry', [App\Http\Controllers\Frontend\DistributorEnquiryController::class, 'store'])->name('distributor-enquiry.store');
+
+Route::get('/contacts', [App\Http\Controllers\Frontend\ContactEnquiryController::class, 'index'])->name('contact');
+Route::post('contact-enquiry', [App\Http\Controllers\Frontend\ContactEnquiryController::class, 'store'])->name('contact-enquiry.store');

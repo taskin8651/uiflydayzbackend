@@ -195,6 +195,58 @@
     </div>
 @endcanany
 
+{{-- ENQUIRY MANAGEMENT GROUP --}}
+@canany(['distributor_enquiry_access', 'contact_enquiry_access'])
+    @php
+        $enquiryActive = request()->is('admin/distributor-enquiries*')
+            || request()->is('admin/contact-enquiries*');
+    @endphp
+
+    <div x-data="{ open: {{ $enquiryActive ? 'true' : 'false' }} }">
+
+        <button type="button"
+                @click="open = !open"
+                data-tooltip="Enquiries"
+                class="nav-link nav-group-btn {{ $enquiryActive ? 'active' : '' }}">
+
+            <div class="nav-group-left">
+                <i class="fas fa-inbox nav-icon"></i>
+                <span class="nav-label">Enquiries</span>
+            </div>
+
+            <i class="fas fa-chevron-right chevron"
+               :style="open ? 'transform:rotate(90deg)' : ''"></i>
+        </button>
+
+        <div class="submenu"
+             x-show="open"
+             x-transition:enter="transition ease-out duration-150"
+             x-transition:enter-start="opacity-0 -translate-y-1"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-100"
+             x-transition:leave-start="opacity-100 translate-y-0"
+             x-transition:leave-end="opacity-0 -translate-y-1">
+
+            @can('distributor_enquiry_access')
+                <a href="{{ route('admin.distributor-enquiries.index') }}"
+                   class="sub-link {{ request()->is('admin/distributor-enquiries*') ? 'active' : '' }}">
+                    <i class="fas fa-handshake"></i>
+                    Distributor Enquiries
+                </a>
+            @endcan
+
+            @can('contact_enquiry_access')
+                <a href="{{ route('admin.contact-enquiries.index') }}"
+                   class="sub-link {{ request()->is('admin/contact-enquiries*') ? 'active' : '' }}">
+                    <i class="fas fa-envelope-open-text"></i>
+                    Contact Enquiries
+                </a>
+            @endcan
+
+        </div>
+    </div>
+@endcanany
+
         <a href="{{ route('admin.blog-posts.index') }}"
            data-tooltip="Blog Articles"
            class="nav-link {{ request()->is('admin/blog-posts*') ? 'active' : '' }}">
