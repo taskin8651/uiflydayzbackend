@@ -109,10 +109,11 @@
         @endcan
 
        {{-- TECHNOLOGY CONTENT GROUP --}}
-@canany(['tech_pillar_access', 'about_section_access'])
+@canany(['tech_pillar_access', 'about_section_access', 'download_item_access'])
     @php
         $techActive = request()->is('admin/tech-pillars*')
-            || request()->is('admin/about-section*');
+            || request()->is('admin/about-section*')
+            || request()->is('admin/download-items*');
     @endphp
 
     <div x-data="{ open: {{ $techActive ? 'true' : 'false' }} }">
@@ -153,6 +154,14 @@
                    class="sub-link {{ request()->is('admin/tech-pillars*') ? 'active' : '' }}">
                     <i class="fas fa-layer-group"></i>
                     Technology Pillars
+                </a>
+            @endcan
+
+            @can('download_item_access')
+                <a href="{{ route('admin.download-items.index') }}"
+                   class="sub-link {{ request()->is('admin/download-items*') ? 'active' : '' }}">
+                    <i class="fas fa-download"></i>
+                    Download Items
                 </a>
             @endcan
 

@@ -35,6 +35,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // About Section
 Route::get('about-section', 'AboutSectionController@index')->name('about-section.index');
 Route::put('about-section', 'AboutSectionController@update')->name('about-section.update');
+
+// Download Items
+Route::delete('download-items/destroy', 'DownloadItemController@massDestroy')->name('download-items.massDestroy');
+Route::resource('download-items', 'DownloadItemController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
@@ -51,3 +55,4 @@ Route::view('/','frontend.index');
 
 Route::get('/technology', [App\Http\Controllers\Frontend\TechPillarController::class, 'index'])->name('technology');
 Route::get('/why-choose-us', [App\Http\Controllers\Frontend\WhychooseController::class, 'index'])->name('whychoose');
+Route::get('/downloads', [App\Http\Controllers\Frontend\DownloadController::class, 'index'])->name('downloads');
