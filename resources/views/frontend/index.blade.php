@@ -1623,7 +1623,7 @@
 
               <div class="contact-holiday-note">
                 <i class="bi bi-info-circle-fill"></i>
-                <span>Closed on Government Holidays</span>
+                <span>Closed on Public Holidays, Government Holidays, and Major Festivals</span>
               </div>
 
             </div>

@@ -9,5 +9,4 @@
   <div class="auth-row"><label class="auth-check"><input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember me</label>@if(Route::has('password.request'))<a class="auth-link" href="{{ route('password.request') }}">Forgot password?</a>@endif</div>
   <button class="auth-submit" type="submit">Login to dashboard <i class="bi bi-arrow-right"></i></button>
 </form>
-@if(Route::has('register'))<p class="auth-switch">New here? <a class="auth-link" href="{{ route('register') }}">Create an account</a></p>@endif
 @endsection
