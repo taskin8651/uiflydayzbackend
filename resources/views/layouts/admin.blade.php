@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ trans('panel.site_title') }}</title>
+    <title>{{ $websiteSettings->website_name }} | @yield('page-title', 'Dashboard') </title>
 
     {{-- Google Fonts --}}
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/admin-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/admin-list.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/admin-show.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/frontend-theme.css') }}">
 
     @yield('styles')
 </head>
