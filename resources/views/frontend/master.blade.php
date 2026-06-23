@@ -316,9 +316,9 @@
             <li><a href="{{ route('technology') }}">Technology</a></li>
             <li><a href="{{ route('whychoose') }}">Why FlyDayz</a></li>
             <li><a href="{{ route('reviews') }}">Reviews</a></li>
-            <li><a href="faqs.html">FAQs</a></li>
-            <li><a href="privacy-policy.html">Privacy</a></li>
-            <li><a href="t&c.html">T&amp;C</a></li>
+            <li><a href="{{ route('faqs') }}">FAQs</a></li>
+            <li><a href="{{ route('privacy') }}">Privacy</a></li>
+            <li><a href="{{ route('terms') }}">T&amp;C</a></li>
           </ul>
 
         </div>
@@ -400,6 +400,14 @@
 
             </a>
 
+
+            @if($websiteSettings->email)
+              <a class="footer-contact-row" href="mailto:{{ $websiteSettings->email }}">
+                <div class="footer-contact-icon"><i class="bi bi-envelope-fill"></i></div>
+                <div class="footer-contact-info"><span>Email Us</span><strong>{{ $websiteSettings->email }}</strong></div>
+                <i class="bi bi-arrow-up-right footer-contact-arrow"></i>
+              </a>
+            @endif
 
             <!-- DISTRIBUTOR CARD -->
             <div class="footer-distributor-card">
@@ -540,6 +548,7 @@
       'name' => $websiteSettings->website_name,
       'phone' => $websiteSettings->primary_phone,
       'phoneUrl' => $websiteSettings->phone_url,
+      'email' => $websiteSettings->email,
       'whatsappUrl' => $websiteSettings->whatsappUrl('Hi ' . $websiteSettings->website_name . ' Team, I need help.'),
       'logoUrl' => $websiteSettings->header_logo_url,
       'footerDescription' => $websiteSettings->footer_description,
@@ -552,6 +561,7 @@
       const settings = window.flydayzSettings;
       document.querySelectorAll('a[href^="tel:"]').forEach(link => link.href = settings.phoneUrl);
       document.querySelectorAll('a[href*="wa.me/"]').forEach(link => link.href = settings.whatsappUrl);
+      document.querySelectorAll('a[href^="mailto:"]').forEach(link => link.href = 'mailto:' + (settings.email || ''));
       document.querySelectorAll('img[src*="assets/images/hero/logo.png"]').forEach(image => image.src = settings.logoUrl);
       const footerAbout = document.querySelector('.footer-about');
       if (footerAbout && settings.footerDescription) footerAbout.textContent = settings.footerDescription;

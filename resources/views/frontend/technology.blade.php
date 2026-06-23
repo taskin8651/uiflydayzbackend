@@ -567,7 +567,7 @@
 
             </div>
 
-            <a href="all-product.html?category=regular"
+            <a href="{{ route('products') }}"
                class="tech-product-btn">
 
               View Regular Products
@@ -662,7 +662,7 @@
 
             </div>
 
-            <a href="all-product.html?category=xl"
+            <a href="{{ route('products') }}"
                class="tech-product-btn">
 
               View XL Products
@@ -757,7 +757,7 @@
 
             </div>
 
-            <a href="all-product.html?category=xxl"
+            <a href="{{ route('products') }}"
                class="tech-product-btn">
 
               View XXL Products
@@ -978,7 +978,7 @@
 
               </div>
 
-              <a href="certification.html"
+              <a href="{{ route('certificates') }}"
                  class="tech-btn-primary">
 
                 View Certifications
@@ -1056,7 +1056,7 @@
 
         <div class="tech-page-cta-actions">
 
-          <a href="all-product.html"
+          <a href="{{ route('products') }}"
              class="tech-btn-primary">
 
             <i class="bi bi-bag-heart"></i>

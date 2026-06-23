@@ -36,7 +36,7 @@
           <a href="#downloads" class="dl-btn-primary">
             Browse Downloads <i class="bi bi-arrow-down-short"></i>
           </a>
-          <a href="contact.html" class="dl-btn-secondary">
+          <a href="{{ route('contact') }}" class="dl-btn-secondary">
             Need Help?
           </a>
         </div>

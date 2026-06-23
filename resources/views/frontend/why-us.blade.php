@@ -412,7 +412,7 @@
             <h3>FlyDayz Regular</h3>
             <p>Soft, lightweight protection for routine daytime comfort.</p>
             <div class="wy-product-meta"><span><i class="bi bi-rulers"></i> 240 mm</span><span><i
-                  class="bi bi-droplet-half"></i> Normal Flow</span></div><a href="all-product.html?category=regular"
+                  class="bi bi-droplet-half"></i> Normal Flow</span></div><a href="{{ route('products') }}"
               class="wy-product-link">View Regular Range <i class="bi bi-arrow-right-short"></i></a>
           </div>
         </article>
@@ -424,7 +424,7 @@
             <h3>FlyDayz XL</h3>
             <p>Wider coverage and gel-lock support for heavy-flow days.</p>
             <div class="wy-product-meta"><span><i class="bi bi-rulers"></i> 280 mm</span><span><i
-                  class="bi bi-droplet-fill"></i> Heavy Flow</span></div><a href="all-product.html?category=xl"
+                  class="bi bi-droplet-fill"></i> Heavy Flow</span></div><a href="{{ route('products') }}"
               class="wy-product-link">View XL Range <i class="bi bi-arrow-right-short"></i></a>
           </div>
         </article>
@@ -436,7 +436,7 @@
             <h3>FlyDayz XXL</h3>
             <p>Extra-long protection for very heavy flow and overnight comfort.</p>
             <div class="wy-product-meta"><span><i class="bi bi-rulers"></i> 330 mm</span><span><i
-                  class="bi bi-moon-stars"></i> Night Care</span></div><a href="all-product.html?category=xxl"
+                  class="bi bi-moon-stars"></i> Night Care</span></div><a href="{{ route('products') }}"
               class="wy-product-link">View XXL Range <i class="bi bi-arrow-right-short"></i></a>
           </div>
         </article>
@@ -524,7 +524,7 @@
           <h2>Choose Comfort. Choose Confidence. Choose FlyDayz.</h2>
           <p>Explore the product range or connect with our team for availability, bulk orders and distributorship.</p>
         </div>
-        <div class="wy-cta-actions"><a href="all-product.html" class="wy-btn-primary"><i class="bi bi-bag-heart"></i>
+        <div class="wy-cta-actions"><a href="{{ route('products') }}" class="wy-btn-primary"><i class="bi bi-bag-heart"></i>
             Explore Products</a><a target="_blank"
             href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20more%20details%20about%20FlyDayz."
             class="wy-whatsapp"><i class="bi bi-whatsapp"></i> WhatsApp</a></div>

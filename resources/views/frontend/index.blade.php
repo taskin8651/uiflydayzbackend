@@ -86,12 +86,12 @@
                 </div>
 
                 <div class="hero-btns">
-                  <a class="hero-btn-primary" href="all-product.html">
+                  <a class="hero-btn-primary" href="{{ route('products') }}">
                     Explore Products
                     <i class="bi bi-arrow-right-short"></i>
                   </a>
 
-                  <a class="hero-btn-secondary" href="technology.html">
+                  <a class="hero-btn-secondary" href="{{ route('technology') }}">
                     See Technology
                   </a>
                 </div>
@@ -210,12 +210,12 @@
                 </div>
 
                 <div class="hero-btns">
-                  <a class="hero-btn-primary" href="all-product.html">
+                  <a class="hero-btn-primary" href="{{ route('products') }}">
                     Shop Now
                     <i class="bi bi-arrow-right-short"></i>
                   </a>
 
-                  <a class="hero-btn-secondary" href="why-us.html">
+                  <a class="hero-btn-secondary" href="{{ route('whychoose') }}">
                     Why FlyDayz
                   </a>
                 </div>
@@ -334,12 +334,12 @@
                 </div>
 
                 <div class="hero-btns">
-                  <a class="hero-btn-primary" href="all-product.html">
+                  <a class="hero-btn-primary" href="{{ route('products') }}">
                     View Range
                     <i class="bi bi-arrow-right-short"></i>
                   </a>
 
-                  <a class="hero-btn-secondary" href="contact.html">
+                  <a class="hero-btn-secondary" href="{{ route('contact') }}">
                     Contact Us
                   </a>
                 </div>
@@ -721,7 +721,7 @@
           </div>
 
           <div class="feature-actions">
-            <a class="btn feature-btn-primary" href="all-product.html">
+            <a class="btn feature-btn-primary" href="{{ route('products') }}">
               <i class="bi bi-bag-heart me-2"></i>
               Explore Products
             </a>
@@ -951,7 +951,7 @@
         </div>
 
         <div class="why-cta-actions">
-          <a class="btn why-btn-primary" href="all-product.html">
+          <a class="btn why-btn-primary" href="{{ route('products') }}">
             <i class="bi bi-bag-heart me-2"></i>
             Explore Products
           </a>
@@ -998,7 +998,7 @@
             safe, and premium feminine hygiene products for everyday confidence.
           </p>
 
-          <a href="certificates.html" class="cert-btn">
+          <a href="{{ route('certificates') }}" class="cert-btn">
             View Certificates
             <i class="bi bi-arrow-right-short"></i>
           </a>

@@ -114,3 +114,5 @@ Route::post('distributor-enquiry', [App\Http\Controllers\Frontend\DistributorEnq
 Route::get('/contacts', [App\Http\Controllers\Frontend\ContactEnquiryController::class, 'index'])->name('contact');
 Route::post('contact-enquiry', [App\Http\Controllers\Frontend\ContactEnquiryController::class, 'store'])->name('contact-enquiry.store');
 Route::get('/faqs', [App\Http\Controllers\Frontend\FaqController::class, 'index'])->name('faqs');
+Route::view('/privacy-policy', 'frontend.privacy-policy')->name('privacy');
+Route::view('/terms-and-conditions', 'frontend.term-condition')->name('terms');

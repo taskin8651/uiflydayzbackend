@@ -48,7 +48,7 @@
           <a href="#certificationLibrary" class="cf-btn-primary">
             Explore Certifications <i class="bi bi-arrow-down-short"></i>
           </a>
-          <a href="contact.html" class="cf-btn-secondary">Request Verification</a>
+          <a href="{{ route('contact') }}" class="cf-btn-secondary">Request Verification</a>
         </div>
       </div>
 
@@ -426,7 +426,7 @@
       </div>
 
       <div class="cf-cta-actions">
-        <a href="download.html" class="cf-btn-primary">
+        <a href="{{ route('downloads') }}" class="cf-btn-primary">
           <i class="bi bi-download"></i> Download Documents
         </a>
 
