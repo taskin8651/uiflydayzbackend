@@ -481,7 +481,7 @@
       <div class="footer-visitor">
         <i class="bi bi-eye-fill"></i>
         <span>Total Visitors :</span>
-        <strong id="visitorCount">000000</strong>
+        <strong id="visitorCount">{{ str_pad((string) $websiteSettings->visitor_count, 6, '0', STR_PAD_LEFT) }}</strong>
       </div>
 
       <div class="footer-social">

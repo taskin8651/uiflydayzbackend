@@ -85,6 +85,15 @@
                     </div>
                 </div>
 
+                <div class="field-group">
+                    <label class="field-label">Visitor Counter</label>
+                    <div class="input-icon-wrap">
+                        <i class="fas fa-eye icon"></i>
+                        <input type="number" min="0" name="visitor_count" value="{{ old('visitor_count', $websiteSetting->visitor_count) }}" class="field-input">
+                    </div>
+                    <p class="field-hint">Set the starting total. Each new website browser session increases this number by 1.</p>
+                </div>
+
             </div>
         </div>
 

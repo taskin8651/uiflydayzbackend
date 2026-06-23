@@ -31643,14 +31643,14 @@ body {
 }
 
 .pp-cookie-head {
-  color: #fff;
+  color: yellow;
   background: linear-gradient(135deg, var(--pp-pink), var(--pp-purple))
 }
 
 .pp-cookie-row span,
 .pp-cookie-row em {
   font-size: 11px;
-  color: var(--pp-muted);
+  color: black;
   font-style: normal
 }
 

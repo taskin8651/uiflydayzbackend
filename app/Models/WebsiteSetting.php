@@ -16,6 +16,7 @@ class WebsiteSetting extends Model implements HasMedia
         'tagline',
         'footer_description',
         'copyright_text',
+        'visitor_count',
 
         'primary_phone',
         'secondary_phone',

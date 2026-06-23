@@ -25,6 +25,7 @@ class WebsiteSettingController extends Controller
             'tagline' => ['nullable', 'string', 'max:255'],
             'footer_description' => ['nullable', 'string'],
             'copyright_text' => ['nullable', 'string', 'max:255'],
+            'visitor_count' => ['nullable', 'integer', 'min:0'],
 
             'primary_phone' => ['nullable', 'string', 'max:50'],
             'secondary_phone' => ['nullable', 'string', 'max:50'],
@@ -67,6 +68,7 @@ class WebsiteSettingController extends Controller
             'tagline',
             'footer_description',
             'copyright_text',
+            'visitor_count',
 
             'primary_phone',
             'secondary_phone',
