@@ -4,7 +4,6 @@
     <div class="sidebar-brand">
         <a href="{{ route('admin.home') }}" class="brand-area admin-brand-link">
             <img src="{{ $websiteSettings->header_logo_url }}" alt="{{ $websiteSettings->website_name }}" class="admin-brand-logo">
-            <span class="brand-text">{{ $websiteSettings->website_short_name ?: $websiteSettings->website_name }}</span>
         </a>
     </div>
 
