@@ -107,6 +107,65 @@
                 </div>
             </div>
         @endcan
+        @canany(['product_size_category_access', 'protection_type_access', 'product_access'])
+    @php
+        $productActive = request()->is('admin/product-size-categories*')
+            || request()->is('admin/protection-types*')
+            || request()->is('admin/products*');
+    @endphp
+
+    <div x-data="{ open: {{ $productActive ? 'true' : 'false' }} }">
+
+        <button type="button"
+                @click="open = !open"
+                data-tooltip="Products"
+                class="nav-link nav-group-btn {{ $productActive ? 'active' : '' }}">
+
+            <div class="nav-group-left">
+                <i class="fas fa-box-open nav-icon"></i>
+                <span class="nav-label">Product Management</span>
+            </div>
+
+            <i class="fas fa-chevron-right chevron"
+               :style="open ? 'transform:rotate(90deg)' : ''"></i>
+        </button>
+
+        <div class="submenu"
+             x-show="open"
+             x-transition:enter="transition ease-out duration-150"
+             x-transition:enter-start="opacity-0 -translate-y-1"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-100"
+             x-transition:leave-start="opacity-100 translate-y-0"
+             x-transition:leave-end="opacity-0 -translate-y-1">
+
+            @can('product_size_category_access')
+                <a href="{{ route('admin.product-size-categories.index') }}"
+                   class="sub-link {{ request()->is('admin/product-size-categories*') ? 'active' : '' }}">
+                    <i class="fas fa-ruler"></i>
+                    Size Categories
+                </a>
+            @endcan
+
+            @can('protection_type_access')
+                <a href="{{ route('admin.protection-types.index') }}"
+                   class="sub-link {{ request()->is('admin/protection-types*') ? 'active' : '' }}">
+                    <i class="fas fa-shield-alt"></i>
+                    Protection Types
+                </a>
+            @endcan
+
+            @can('product_access')
+                <a href="{{ route('admin.products.index') }}"
+                   class="sub-link {{ request()->is('admin/products*') ? 'active' : '' }}">
+                    <i class="fas fa-box"></i>
+                    Products
+                </a>
+            @endcan
+
+        </div>
+    </div>
+@endcanany
 
       @canany(['tech_pillar_access', 'about_section_access', 'download_item_access', 'certificate_item_access', 'review_item_access', 'career_job_access'])
     @php
@@ -246,6 +305,16 @@
         </div>
     </div>
 @endcanany
+
+@can('faq_item_access')
+    <a href="{{ route('admin.faq-items.index') }}"
+       class="nav-link {{ request()->is('admin/faq-items*') ? 'active' : '' }}"
+       data-tooltip="FAQ Items">
+
+        <i class="fas fa-question-circle nav-icon"></i>
+        <span class="nav-label">FAQ Items</span>
+    </a>
+@endcan
 
         <a href="{{ route('admin.blog-posts.index') }}"
            data-tooltip="Blog Articles"

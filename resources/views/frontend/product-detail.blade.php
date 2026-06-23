@@ -1,4 +1,4 @@
-@extesnds('frontend.master')
+@extends('frontend.master')
 @section('content')
 
 <!-- ===================== PRODUCT DETAIL PREMIUM START ===================== -->
@@ -13,195 +13,190 @@
 
     <div class="container position-relative">
 
-      <div class="row align-items-center g-4 g-lg-5">
+    @php
+    $mainImage = $product->getFirstMediaUrl('product_main_image')
+        ?: asset('assets/images/products/product.png');
 
-        <!-- LEFT IMAGE GALLERY -->
-        <div class="col-lg-6">
-          <div class="pdx-product-gallery">
+    $galleryImages = $product->getMedia('product_gallery');
 
-            <!-- MAIN IMAGE CARD -->
+    $allImages = collect();
+
+    $allImages->push([
+        'url' => $mainImage,
+        'alt' => $product->name,
+    ]);
+
+    foreach ($galleryImages as $galleryImage) {
+        $allImages->push([
+            'url' => $galleryImage->getUrl(),
+            'alt' => $product->name,
+        ]);
+    }
+
+    $features = array_filter([
+        $product->feature_one,
+        $product->feature_two,
+        $product->feature_three,
+        $product->feature_four,
+    ]);
+
+    $rating = (float) $product->rating;
+@endphp
+
+<div class="row align-items-center g-4 g-lg-5">
+
+    <div class="col-lg-6">
+        <div class="pdx-product-gallery">
+
             <div class="pdx-image-card">
 
-              <div class="pdx-image-badge">
-                <i class="bi bi-stars"></i>
-                Premium XL Gold
-              </div>
+                <div class="pdx-image-badge">
+                    <i class="bi bi-stars"></i>
+                    {{ $product->badge_text ?: 'Premium Product' }}
+                </div>
 
-              <div class="pdx-ring pdx-ring-one"></div>
-              <div class="pdx-ring pdx-ring-two"></div>
+                <div class="pdx-ring pdx-ring-one"></div>
+                <div class="pdx-ring pdx-ring-two"></div>
 
-              <img
-                src="assets/images/products/product2.png"
-                alt="FlyDayz XL Gold"
-                class="pdx-main-img"
-                id="pdxMainImage"
-              >
+                <img src="{{ $mainImage }}"
+                     alt="{{ $product->name }}"
+                     class="pdx-main-img"
+                     id="pdxMainImage">
 
-              <div class="pdx-float-card pdx-float-one">
-                <i class="bi bi-droplet-half"></i>
-                <span>3X Absorption</span>
-              </div>
+                <div class="pdx-float-card pdx-float-one">
+                    <i class="bi bi-droplet-half"></i>
+                    <span>{{ $product->float_one_text ?: '3X Absorption' }}</span>
+                </div>
 
-              <div class="pdx-float-card pdx-float-two">
-                <i class="bi bi-shield-check"></i>
-                <span>Leak Guard</span>
-              </div>
+                <div class="pdx-float-card pdx-float-two">
+                    <i class="bi bi-shield-check"></i>
+                    <span>{{ $product->float_two_text ?: 'Leak Guard' }}</span>
+                </div>
 
             </div>
 
-            <!-- THUMBNAILS -->
-            <div class="pdx-thumb-row">
+            @if($allImages->count())
+                <div class="pdx-thumb-row">
+                    @foreach($allImages as $key => $image)
+                        <button type="button"
+                                class="pdx-thumb {{ $key === 0 ? 'active' : '' }}"
+                                data-image="{{ $image['url'] }}"
+                                aria-label="View product image {{ $key + 1 }}">
+                            <img src="{{ $image['url'] }}" alt="{{ $image['alt'] }}">
+                        </button>
+                    @endforeach
+                </div>
+            @endif
 
-              <button
-                type="button"
-                class="pdx-thumb active"
-                data-image="assets/images/products/product2.png"
-                aria-label="View product image 1"
-              >
-                <img
-                  src="assets/images/products/product2.png"
-                  alt="FlyDayz XL Gold"
-                >
-              </button>
-
-              <button
-                type="button"
-                class="pdx-thumb"
-                data-image="assets/images/products/product.png"
-                aria-label="View product image 2"
-              >
-                <img
-                  src="assets/images/products/product.png"
-                  alt="FlyDayz Regular"
-                >
-              </button>
-
-              <button
-                type="button"
-                class="pdx-thumb"
-                data-image="assets/images/products/product3.png"
-                aria-label="View product image 3"
-              >
-                <img
-                  src="assets/images/products/product3.png"
-                  alt="FlyDayz Premium Pack"
-                >
-              </button>
-
-              <button
-                type="button"
-                class="pdx-thumb"
-                data-image="assets/images/products/product4.png"
-                aria-label="View product image 4"
-              >
-                <img
-                  src="assets/images/products/product4.png"
-                  alt="FlyDayz Overnight"
-                >
-              </button>
-
-            </div>
-
-          </div>
         </div>
+    </div>
 
-
-        <!-- RIGHT DETAILS -->
-        <div class="col-lg-6">
-          <div class="pdx-detail-content">
+    <div class="col-lg-6">
+        <div class="pdx-detail-content">
 
             <div class="pdx-kicker">
-              <span><i class="bi bi-bag-heart-fill"></i></span>
-              Product Detail
+                <span><i class="bi bi-bag-heart-fill"></i></span>
+                Product Detail
             </div>
 
             <h1 class="pdx-title">
-              FlyDayz XL Gold
-              <span>Premium Protection for Heavy Flow</span>
+                {{ $product->name }}
+
+                @if($product->subtitle)
+                    <span>{{ $product->subtitle }}</span>
+                @endif
             </h1>
 
-            <p class="pdx-short-desc">
-              FlyDayz XL Gold is designed for soft comfort, fast absorption,
-              secure fit and dependable protection during heavy-flow days.
-            </p>
+            @if($product->short_description)
+                <p class="pdx-short-desc">
+                    {{ $product->short_description }}
+                </p>
+            @endif
 
             <div class="pdx-rating">
-              <div class="pdx-stars">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-half"></i>
-              </div>
+                <div class="pdx-stars">
+                    @for($i = 1; $i <= 5; $i++)
+                        @if($rating >= $i)
+                            <i class="bi bi-star-fill"></i>
+                        @elseif($rating >= ($i - 0.5))
+                            <i class="bi bi-star-half"></i>
+                        @else
+                            <i class="bi bi-star"></i>
+                        @endif
+                    @endfor
+                </div>
 
-              <span>4.8/5 customer rating</span>
+                <span>{{ $product->rating_text ?: number_format($rating, 1) . '/5 customer rating' }}</span>
             </div>
 
             <div class="pdx-info-grid">
 
-              <div class="pdx-info-box">
-                <small>Size</small>
-                <strong>XL · 280 mm</strong>
-              </div>
+                <div class="pdx-info-box">
+                    <small>Size</small>
+                    <strong>{{ $product->size_text ?: optional($product->sizeCategory)->size_label }}</strong>
+                </div>
 
-              <div class="pdx-info-box">
-                <small>Flow</small>
-                <strong>Heavy Flow</strong>
-              </div>
+                <div class="pdx-info-box">
+                    <small>Flow</small>
+                    <strong>{{ $product->flow_text ?: optional($product->sizeCategory)->flow_label }}</strong>
+                </div>
 
-              <div class="pdx-info-box">
-                <small>Pack</small>
-                <strong>6 Pads</strong>
-              </div>
+                <div class="pdx-info-box">
+                    <small>Pack</small>
+                    <strong>{{ $product->pack_text ?: 'Pack' }}</strong>
+                </div>
 
             </div>
 
-            <ul class="pdx-points">
-
-              <li>
-                <i class="bi bi-check-circle-fill"></i>
-                Cotton-soft top sheet for gentle comfort
-              </li>
-
-              <li>
-                <i class="bi bi-check-circle-fill"></i>
-                Quick absorption support with gel-lock core
-              </li>
-
-              <li>
-                <i class="bi bi-check-circle-fill"></i>
-                Secure wings for better fit and coverage
-              </li>
-
-              <li>
-                <i class="bi bi-check-circle-fill"></i>
-                Designed for day care and heavy-flow protection
-              </li>
-
-            </ul>
+            @if(count($features))
+                <ul class="pdx-points">
+                    @foreach($features as $feature)
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            {{ $feature }}
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
 
             <div class="pdx-actions">
 
-              <a href="contact.html" class="pdx-btn pdx-btn-primary">
-                Buy / Enquire
-                <i class="bi bi-arrow-right-short"></i>
-              </a>
+                <a href="{{ route('contact') ?? url('/contact') }}" class="pdx-btn pdx-btn-primary">
+                    Buy / Enquire
+                    <i class="bi bi-arrow-right-short"></i>
+                </a>
 
-              <a
-                target="_blank"
-                href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20details%20about%20FlyDayz%20XL%20Gold."
-                class="pdx-btn pdx-btn-whatsapp"
-              >
-                <i class="bi bi-whatsapp"></i>
-                WhatsApp
-              </a>
+                <a target="_blank"
+                   href="https://wa.me/917209770033?text={{ urlencode('Hi FlyDayz Team, I want details about ' . $product->name . '.') }}"
+                   class="pdx-btn pdx-btn-whatsapp">
+                    <i class="bi bi-whatsapp"></i>
+                    WhatsApp
+                </a>
 
             </div>
 
-          </div>
         </div>
+    </div>
 
-      </div>
+</div>
+<script>
+  document.querySelectorAll('.pdx-thumb').forEach(function (thumb) {
+  thumb.addEventListener('click', function () {
+    const image = this.getAttribute('data-image');
+    const mainImage = document.getElementById('pdxMainImage');
+
+    if (mainImage && image) {
+      mainImage.setAttribute('src', image);
+    }
+
+    document.querySelectorAll('.pdx-thumb').forEach(function (item) {
+      item.classList.remove('active');
+    });
+
+    this.classList.add('active');
+  });
+});
+</script>
 
     </div>
   </section>

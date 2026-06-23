@@ -66,6 +66,23 @@ Route::resource('contact-enquiries', 'ContactEnquiryController', ['except' => ['
 // Website Settings
 Route::get('website-settings', 'WebsiteSettingController@index')->name('website-settings.index');
 Route::put('website-settings', 'WebsiteSettingController@update')->name('website-settings.update');
+
+ // FAQ Items
+    Route::delete('faq-items/destroy', 'FaqItemController@massDestroy')->name('faq-items.massDestroy');
+    Route::resource('faq-items', 'FaqItemController');
+
+    // Product Size Categories
+Route::delete('product-size-categories/destroy', 'ProductSizeCategoryController@massDestroy')->name('product-size-categories.massDestroy');
+Route::resource('product-size-categories', 'ProductSizeCategoryController');
+
+// Protection Types
+Route::delete('protection-types/destroy', 'ProtectionTypeController@massDestroy')->name('protection-types.massDestroy');
+Route::resource('protection-types', 'ProtectionTypeController');
+
+// Products
+Route::delete('products/destroy', 'ProductController@massDestroy')->name('products.massDestroy');
+Route::resource('products', 'ProductController');
+
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
@@ -78,10 +95,9 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 });
 
 
-Route::view('/','frontend.index')->name('home');
-
-Route::view('/products', 'frontend.product')->name('products');
-Route::view('/products/detail', 'frontend.product-detail')->name('products.detail');
+Route::get('/', 'Frontend\IndexController@index')->name('home');
+Route::get('/products', 'Frontend\ProductController@index')->name('products');
+Route::get('/products/{slug}', 'Frontend\ProductController@show')->name('products.show');
 Route::get('/technology', [App\Http\Controllers\Frontend\TechPillarController::class, 'index'])->name('technology');
 Route::get('/why-choose-us', [App\Http\Controllers\Frontend\WhychooseController::class, 'index'])->name('whychoose');
 Route::get('/downloads', [App\Http\Controllers\Frontend\DownloadController::class, 'index'])->name('downloads');
@@ -97,3 +113,4 @@ Route::post('distributor-enquiry', [App\Http\Controllers\Frontend\DistributorEnq
 
 Route::get('/contacts', [App\Http\Controllers\Frontend\ContactEnquiryController::class, 'index'])->name('contact');
 Route::post('contact-enquiry', [App\Http\Controllers\Frontend\ContactEnquiryController::class, 'store'])->name('contact-enquiry.store');
+Route::get('/faqs', [App\Http\Controllers\Frontend\FaqController::class, 'index'])->name('faqs');

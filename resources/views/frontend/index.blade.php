@@ -461,136 +461,72 @@
       </div>
 
       <!-- PRODUCT GRID -->
-      <div class="product-size-grid">
+      @if(isset($productSizeCategories) && $productSizeCategories->count())
+    <div class="product-size-grid">
 
-        <!-- Product 1 -->
-        <article class="product-size-card">
-          <div class="product-card-top">
-            <span class="product-serial">01</span>
-          </div>
+        @foreach($productSizeCategories as $index => $category)
+            @php
+                $product = \App\Models\Product::where('status', true)
+                    ->where('product_size_category_id', $category->id)
+                    ->orderBy('sort_order')
+                    ->first();
 
-          <div class="product-media">
-            <img src="assets/images/products/product.png" alt="FlyDayz XL Pack">
-          </div>
+                $image = $product && $product->getFirstMediaUrl('product_main_image')
+                    ? $product->getFirstMediaUrl('product_main_image')
+                    : asset('assets/images/products/product.png');
+            @endphp
 
-          <div class="product-body">
-            <div class="product-spec-row">
-              <div>
-                <small>Size</small>
-                <strong>L-240mm</strong>
-              </div>
-              <div>
-                <small>Flow</small>
-                <strong>Normal</strong>
-              </div>
-            </div>
+            <article class="product-size-card">
+                <div class="product-card-top">
+                    <span class="product-serial">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
+                </div>
 
-            <div class="absorption-box normal">
-              <div class="absorption-labels">
-                <span>Normal</span>
-                <span>Heavy Flow</span>
-                <span>Very Heavy</span>
-              </div>
+                <div class="product-media">
+                    <img src="{{ $image }}" alt="{{ $category->name }}">
+                </div>
 
-              <div class="absorption-track">
-                <span></span>
-                <i></i>
-              </div>
+                <div class="product-body">
+                    <div class="product-spec-row">
+                        <div>
+                            <small>Size</small>
+                            <strong>{{ $category->size_label ?: $category->name }}</strong>
+                        </div>
 
-              <div class="absorption-text">Normal Flow</div>
-            </div>
+                        <div>
+                            <small>Flow</small>
+                            <strong>{{ $category->flow_label ?: 'Normal' }}</strong>
+                        </div>
+                    </div>
 
-            <div class="product-actions">
-              <a class="btn btn-brand btn-sm flex-grow-1" href="#">View More</a>
-            </div>
-          </div>
-        </article>
+                    <div class="absorption-box {{ $category->absorption_type ?: 'normal' }}">
+                        <div class="absorption-labels">
+                            <span>Normal</span>
+                            <span>Heavy Flow</span>
+                            <span>Very Heavy</span>
+                        </div>
 
-        <!-- Product 2 -->
-        <article class="product-size-card">
-          <div class="product-card-top">
-            <span class="product-serial">02</span>
-          </div>
+                        <div class="absorption-track">
+                            <span></span>
+                            <i></i>
+                        </div>
 
-          <div class="product-media">
-            <img src="assets/images/products/product.png" alt="FlyDayz XL Pack">
-          </div>
+                        <div class="absorption-text">
+                            {{ $category->flow_label ?: 'Normal Flow' }}
+                        </div>
+                    </div>
 
-          <div class="product-body">
-            <div class="product-spec-row">
-              <div>
-                <small>Size</small>
-                <strong>XL-280mm</strong>
-              </div>
-              <div>
-                <small>Flow</small>
-                <strong>Heavy</strong>
-              </div>
-            </div>
+                    <div class="product-actions">
+                        <a class="btn btn-brand btn-sm flex-grow-1"
+                           href="{{ route('products') }}?size={{ $category->slug }}">
+                            View More
+                        </a>
+                    </div>
+                </div>
+            </article>
+        @endforeach
 
-            <div class="absorption-box heavy">
-              <div class="absorption-labels">
-                <span>Normal</span>
-                <span>Heavy Flow</span>
-                <span>Very Heavy</span>
-              </div>
-
-              <div class="absorption-track">
-                <span></span>
-                <i></i>
-              </div>
-
-              <div class="absorption-text">Heavy Flow</div>
-            </div>
-
-            <div class="product-actions">
-              <a class="btn btn-brand btn-sm flex-grow-1" href="#">View More</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Product 3 -->
-        <article class="product-size-card">
-          <div class="product-card-top">
-            <span class="product-serial">03</span>
-          </div>
-
-          <div class="product-media">
-            <img src="assets/images/products/product2.png" alt="FlyDayz XL Gold Pack">
-          </div>
-
-          <div class="product-body">
-            <div class="product-spec-row">
-              <div>
-                <small>Size</small>
-                <strong>XXL-330mm</strong>
-              </div>
-              <div>
-                <small>Flow</small>
-                <strong>Very Heavy</strong>
-              </div>
-            </div>
-
-            <div class="absorption-box very-heavy">
-              <div class="absorption-labels">
-                <span>Normal</span>
-                <span>Heavy Flow</span>
-                <span>Very Heavy</span>
-              </div>
-
-              <div class="absorption-track">
-                <span></span>
-                <i></i>
-              </div>
-
-              <div class="absorption-text">Very Heavy Flow</div>
-            </div>
-            <div class="product-actions">
-              <a class="btn btn-brand btn-sm flex-grow-1" href="#">View More</a>
-            </div>
-          </div>
-        </article>
-      </div>
+    </div>
+@endif
 
     </div>
   </section>
@@ -614,97 +550,73 @@
         </p>
       </div>
 
-      <div class="product-type-grid">
+      @if(isset($protectionTypes) && $protectionTypes->count())
+    <div class="product-type-grid">
 
-        <!-- PRODUCT TYPE 1 -->
-        <article class="product-type-card">
-          <div class="product-type-glow"></div>
+        @foreach($protectionTypes as $type)
+            @php
+                $icon = $type->slug === 'ultra-thin-napkins' || $type->slug === 'ultra-thin-napkin'
+                    ? 'bi bi-feather'
+                    : 'bi bi-shield-check';
 
-          <div class="product-type-content">
-            <div class="product-type-badge">
-              <i class="bi bi-shield-check"></i>
-              Everyday Protection
-            </div>
+                $image = $type->getFirstMediaUrl('protection_type_image')
+                    ?: asset('assets/images/products/product.png');
 
-            <h3>Straight Pads</h3>
+                $points = array_filter([
+                    $type->point_one,
+                    $type->point_two,
+                    $type->point_three,
+                ]);
+            @endphp
 
-            <p>
-              Classic comfort and dependable protection for daily hygiene needs with a soft and secure feel.
-            </p>
+            <article class="product-type-card {{ $type->is_alt ? 'product-type-card-alt' : '' }}">
+                <div class="product-type-glow"></div>
 
-            <ul class="product-type-points">
-              <li>
-                <i class="bi bi-check2"></i>
-                Comfortable daily use
-              </li>
-              <li>
-                <i class="bi bi-check2"></i>
-                Soft surface feel
-              </li>
-              <li>
-                <i class="bi bi-check2"></i>
-                Reliable protection
-              </li>
-            </ul>
+                <div class="product-type-content">
+                    <div class="product-type-badge">
+                        <i class="{{ $icon }}"></i>
+                        {{ $type->badge_text ?: 'Everyday Protection' }}
+                    </div>
 
-            <a href="all-product.html?category=straight-pad" class="product-type-btn">
-              View Products
-              <i class="bi bi-arrow-right-short"></i>
-            </a>
-          </div>
+                    <h3>{{ $type->title }}</h3>
 
-          <div class="product-type-visual">
-            <div class="product-type-circle"></div>
-            <img src="assets/images/products/product.png" alt="FlyDayz Straight Pad" class="product-type-img">
-            <img src="assets/images/decor/pad-outline-2.png" alt="" class="product-type-decor">
-          </div>
-        </article>
+                    @if($type->description)
+                        <p>{{ $type->description }}</p>
+                    @endif
 
-        <!-- PRODUCT TYPE 2 -->
-        <article class="product-type-card product-type-card-alt">
-          <div class="product-type-glow"></div>
+                    @if(count($points))
+                        <ul class="product-type-points">
+                            @foreach($points as $point)
+                                <li>
+                                    <i class="bi bi-check2"></i>
+                                    {{ $point }}
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
 
-          <div class="product-type-content">
-            <div class="product-type-badge">
-              <i class="bi bi-feather"></i>
-              Slim Comfort
-            </div>
+                    <a href="{{ route('products') }}?protection={{ $type->slug }}" class="product-type-btn">
+                        View Products
+                        <i class="bi bi-arrow-right-short"></i>
+                    </a>
+                </div>
 
-            <h3>Ultra Thin Napkins</h3>
+                <div class="product-type-visual">
+                    <div class="product-type-circle"></div>
 
-            <p>
-              Slim, lightweight, and comfortable protection made for a fresh feel without heaviness.
-            </p>
+                    <img src="{{ $image }}"
+                         alt="{{ $type->title }}"
+                         class="product-type-img">
 
-            <ul class="product-type-points">
-              <li>
-                <i class="bi bi-check2"></i>
-                Ultra thin comfort
-              </li>
-              <li>
-                <i class="bi bi-check2"></i>
-                Easy movement
-              </li>
-              <li>
-                <i class="bi bi-check2"></i>
-                Fresh and secure feel
-              </li>
-            </ul>
+                    <img src="{{ asset('assets/images/decor/pad-outline-2.png') }}"
+                         alt=""
+                         class="product-type-decor">
+                </div>
+            </article>
+        @endforeach
 
-            <a href="all-product.html?category=ultra-thin-napkin" class="product-type-btn">
-              View Products
-              <i class="bi bi-arrow-right-short"></i>
-            </a>
-          </div>
-
-          <div class="product-type-visual">
-            <div class="product-type-circle"></div>
-            <img src="assets/images/products/product2.png" alt="FlyDayz Ultra Thin Napkin" class="product-type-img">
-            <img src="assets/images/decor/pad-outline-2.png" alt="" class="product-type-decor">
-          </div>
-        </article>
-
-      </div>
+    </div>
+@endif
 
     </div>
   </section>
