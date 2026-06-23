@@ -548,29 +548,8 @@
   @endphp
   <script>
     window.flydayzSettings = {!! json_encode($frontendSettings, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) !!};
-    window.flydayzRoutes = {
-      'index.html': '{{ route('home') }}',
-      'all-product.html': '{{ route('products') }}',
-      'product-detail.html': '{{ route('products.detail') }}',
-      'technology.html': '{{ route('technology') }}',
-      'why-us.html': '{{ route('whychoose') }}',
-      'Download.html': '{{ route('downloads') }}',
-      'download.html': '{{ route('downloads') }}',
-      'certification.html': '{{ route('certificates') }}',
-      'certificates.html': '{{ route('certificates') }}',
-      'reviews.html': '{{ route('reviews') }}',
-      'Blog.html': '{{ route('blog.index') }}',
-      'career.html': '{{ route('careers') }}',
-      'contact.html': '{{ route('contact') }}',
-      'become.html': '{{ route('distributor') }}'
-    };
     document.addEventListener('DOMContentLoaded', function () {
       const settings = window.flydayzSettings;
-      document.querySelectorAll('a[href]').forEach(link => {
-        const href = link.getAttribute('href');
-        const [path, query = ''] = href.split('?');
-        if (window.flydayzRoutes[path]) link.href = window.flydayzRoutes[path] + (query ? '?' + query : '');
-      });
       document.querySelectorAll('a[href^="tel:"]').forEach(link => link.href = settings.phoneUrl);
       document.querySelectorAll('a[href*="wa.me/"]').forEach(link => link.href = settings.whatsappUrl);
       document.querySelectorAll('img[src*="assets/images/hero/logo.png"]').forEach(image => image.src = settings.logoUrl);

@@ -90,7 +90,7 @@
               <i class="bi bi-arrow-down-short"></i>
             </a>
 
-            <a href="all-product.html" class="tech-btn-secondary">
+            <a href="{{ route('products') }}" class="tech-btn-secondary">
               View Products
             </a>
 
@@ -445,12 +445,13 @@
         </div>
 
         <div class="tech-category-summary">
-          <strong>3</strong>
+          <strong>{{ $sizeCategories->count() }}</strong>
           <span>Protection Categories</span>
         </div>
 
       </div>
 
+      @if(false) <!-- Legacy static product cards retained only as reference -->
       <!-- FILTER BUTTONS -->
       <div class="tech-product-filters"
            role="group"
@@ -776,6 +777,31 @@
 
         No products are available in this category.
 
+      </div>
+      @endif
+
+      <div class="tech-product-filters" role="group" aria-label="Product category filters">
+        <button class="tech-filter-btn active" type="button" data-tech-filter="all">All Categories</button>
+        @foreach($sizeCategories as $category)
+          <button class="tech-filter-btn" type="button" data-tech-filter="{{ $category->slug }}">{{ $category->name }}</button>
+        @endforeach
+      </div>
+
+      <div class="tech-product-grid">
+        @forelse($products as $product)
+          @php
+            $image = $product->getFirstMediaUrl('product_main_image') ?: asset('assets/images/products/product.png');
+            $category = optional($product->sizeCategory);
+            $features = array_filter([$product->feature_one, $product->feature_two, $product->feature_three]);
+          @endphp
+          <article class="tech-product-card {{ $product->is_featured ? 'tech-product-featured' : '' }}" data-tech-category="{{ $category->slug ?: 'other' }}">
+            <div class="tech-product-card-top"><span class="tech-product-size">{{ $category->name ?: 'Premium' }}</span><span class="tech-product-flow {{ $product->absorption_type }}">{{ $product->flow_text ?: $category->flow_label ?: 'Comfort Care' }}</span></div>
+            <div class="tech-product-media"><div class="tech-product-media-bg"></div><img src="{{ asset('assets/images/decor/pad-outline-2.png') }}" class="tech-product-pad-bg" alt=""><img src="{{ $image }}" class="tech-category-product-img" alt="{{ $product->name }}"></div>
+            <div class="tech-product-body"><div class="tech-product-heading"><div><span>{{ $product->badge_text ?: optional($product->protectionType)->title ?: 'Premium Protection' }}</span><h3>{{ $product->name }}</h3></div><strong>{{ $product->size_text ?: $category->size_label }}</strong></div><p>{{ $product->short_description }}</p><div class="tech-product-features">@forelse($features as $feature)<span><i class="bi bi-patch-check"></i>{{ $feature }}</span>@empty<span><i class="bi bi-shield-check"></i>Comfort-focused protection</span>@endforelse</div><a href="{{ route('products.show', $product->slug) }}" class="tech-product-btn">View Product <i class="bi bi-arrow-right-short"></i></a></div>
+          </article>
+        @empty
+          <div class="tech-products-empty" style="display:block">Products will appear here once added from the admin panel.</div>
+        @endforelse
       </div>
 
     </div>

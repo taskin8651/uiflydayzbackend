@@ -25,7 +25,7 @@
             </div>
           </div>
           <div class="wy-hero-actions"><a href="#whyPromise" class="wy-btn-primary">Discover Our Promise <i
-                class="bi bi-arrow-down-short"></i></a><a href="all-product.html" class="wy-btn-secondary">Explore
+                class="bi bi-arrow-down-short"></i></a><a href="{{ route('products') }}" class="wy-btn-secondary">Explore
               Products</a></div>
         </div>
         <div class="col-lg-6">
@@ -396,8 +396,9 @@
           <h2>Products for Every Flow Category</h2>
           <p>Choose from daily care, heavy-flow protection and extra-long night care.</p>
         </div>
-        <div class="wy-products-count"><strong>3</strong><span>Core Categories</span></div>
+        <div class="wy-products-count"><strong>{{ $products->count() }}</strong><span>Available Products</span></div>
       </div>
+      @if(false) <!-- Legacy static product cards retained only as reference -->
       <div class="wy-filter-bar"><button class="wy-filter-btn active" data-why-filter="all">All
           Categories</button><button class="wy-filter-btn" data-why-filter="regular">Regular</button><button
           class="wy-filter-btn" data-why-filter="xl">XL</button><button class="wy-filter-btn"
@@ -440,6 +441,9 @@
           </div>
         </article>
       </div>
+      @endif
+      <div class="wy-filter-bar"><button class="wy-filter-btn active" data-why-filter="all">All Categories</button>@foreach($sizeCategories as $category)<button class="wy-filter-btn" data-why-filter="{{ $category->slug }}">{{ $category->name }}</button>@endforeach</div>
+      <div class="wy-product-grid">@forelse($products as $product) @php($category = optional($product->sizeCategory)) @php($image = $product->getFirstMediaUrl('product_main_image') ?: asset('assets/images/products/product.png'))<article class="wy-product-card {{ $product->is_featured ? 'featured' : '' }}" data-why-category="{{ $category->slug ?: 'other' }}"><div class="wy-product-top"><span>{{ $category->name ?: 'Premium' }}</span><strong>{{ $product->flow_text ?: $category->flow_label ?: 'Comfort Care' }}</strong></div><div class="wy-product-media"><img src="{{ asset('assets/images/decor/pad-outline-2.png') }}" class="wy-product-bg" alt=""><img src="{{ $image }}" class="wy-product-img" alt="{{ $product->name }}"></div><div class="wy-product-body"><span class="wy-product-eyebrow">{{ $product->badge_text ?: optional($product->protectionType)->title ?: 'Premium Protection' }}</span><h3>{{ $product->name }}</h3><p>{{ $product->short_description }}</p><div class="wy-product-meta"><span><i class="bi bi-rulers"></i> {{ $product->size_text ?: $category->size_label }}</span><span><i class="bi bi-droplet-half"></i> {{ $product->flow_text ?: $category->flow_label }}</span></div><a href="{{ route('products.show', $product->slug) }}" class="wy-product-link">View Product <i class="bi bi-arrow-right-short"></i></a></div></article>@empty<div class="wy-products-empty">Products will appear here once added from the admin panel.</div>@endforelse</div>
     </div>
   </section>
 

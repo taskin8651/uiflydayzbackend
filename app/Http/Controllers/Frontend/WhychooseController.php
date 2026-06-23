@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\TechPillar;
 use App\Models\AboutSection;
+use App\Models\Product;
+use App\Models\ProductSizeCategory;
 
 
 class WhychooseController extends Controller
@@ -18,6 +20,9 @@ class WhychooseController extends Controller
             ->get();
             $aboutSection = AboutSection::query()->first();
 
-        return view('frontend.why-us', compact('techPillars','aboutSection'));
+        $sizeCategories = ProductSizeCategory::query()->where('status', true)->orderBy('sort_order')->get();
+        $products = Product::query()->with(['sizeCategory', 'protectionType', 'media'])->where('status', true)->orderBy('sort_order')->get();
+
+        return view('frontend.why-us', compact('techPillars', 'aboutSection', 'sizeCategories', 'products'));
     }
 }

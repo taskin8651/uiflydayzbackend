@@ -95,9 +95,9 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 });
 
 
-Route::get('/', 'Frontend\IndexController@index')->name('home');
-Route::get('/products', 'Frontend\ProductController@index')->name('products');
-Route::get('/products/{slug}', 'Frontend\ProductController@show')->name('products.show');
+Route::get('/', [App\Http\Controllers\Frontend\IndexController::class, 'index'])->name('home');
+Route::get('/products', [App\Http\Controllers\Frontend\ProductController::class, 'index'])->name('products');
+Route::get('/products/{slug}', [App\Http\Controllers\Frontend\ProductController::class, 'show'])->name('products.show');
 Route::get('/technology', [App\Http\Controllers\Frontend\TechPillarController::class, 'index'])->name('technology');
 Route::get('/why-choose-us', [App\Http\Controllers\Frontend\WhychooseController::class, 'index'])->name('whychoose');
 Route::get('/downloads', [App\Http\Controllers\Frontend\DownloadController::class, 'index'])->name('downloads');

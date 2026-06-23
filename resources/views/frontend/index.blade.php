@@ -835,89 +835,64 @@
       </div>
 
       <!-- 5 IN 1 FEATURE CARDS -->
-      <div class="row g-4 why-card-row row-cols-1 row-cols-sm-2 row-cols-lg-5">
+     @if(isset($techPillars) && $techPillars->count())
 
-        <div class="col">
-          <div class="why-card">
-            <div class="why-card-number">01</div>
+    <div class="row g-4 why-card-row row-cols-1 row-cols-sm-2 row-cols-lg-5">
 
-            <div class="why-icon-img-wrap">
-              <img src="assets/images/ICON-1.png" class="why-icon-img" alt="Fragrance Free">
+        @foreach($techPillars as $index => $pillar)
+
+            @php
+                $fallbackIcons = [
+                    asset('assets/images/ICON-1.png'),
+                    asset('assets/images/ICON-2.png'),
+                    asset('assets/images/ICON3.png'),
+                    asset('assets/images/ICON4.png'),
+                    asset('assets/images/ICON5.png'),
+                ];
+
+                $icon = $pillar->getFirstMediaUrl('tech_pillar_icon')
+                    ?: ($fallbackIcons[$index] ?? asset('assets/images/ICON-1.png'));
+
+                $number = $pillar->number ?: str_pad($index + 1, 2, '0', STR_PAD_LEFT);
+            @endphp
+
+            <div class="col">
+                <div class="why-card {{ $pillar->is_featured ? 'active' : '' }}">
+
+                    <div class="why-card-number">
+                        {{ $number }}
+                    </div>
+
+                    <div class="why-icon-img-wrap">
+                        <img src="{{ $icon }}"
+                             class="why-icon-img"
+                             alt="{{ $pillar->icon_alt ?: $pillar->title }}">
+                    </div>
+
+                    <div class="why-title-sm">
+                        {{ $pillar->title }}
+                    </div>
+
+                    @if($pillar->description)
+                        <div class="why-text">
+                            {{ $pillar->description }}
+                        </div>
+                    @endif
+
+                </div>
             </div>
 
-            <div class="why-title-sm">Fragrance Free</div>
+        @endforeach
 
-            <div class="why-text">
-              Gentle care without added fragrance, designed for a clean and comfortable feel.
-            </div>
-          </div>
-        </div>
+    </div>
 
-        <div class="col">
-          <div class="why-card">
-            <div class="why-card-number">02</div>
+@else
 
-            <div class="why-icon-img-wrap">
-              <img src="assets/images/ICON-2.png" class="why-icon-img" alt="Longer and Wider Wings">
-            </div>
+    <div class="text-center py-5">
+        <p class="mb-0">No technology features found.</p>
+    </div>
 
-            <div class="why-title-sm">Longer & Wider Wings</div>
-
-            <div class="why-text">
-              Wider wing support helps keep the pad in place for better movement confidence.
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="why-card active">
-            <div class="why-card-number">03</div>
-
-            <div class="why-icon-img-wrap">
-              <img src="assets/images/ICON3.png" class="why-icon-img" alt="3X Absorption">
-            </div>
-
-            <div class="why-title-sm">3X Absorption</div>
-
-            <div class="why-text">
-              Built for quick absorption support to help maintain dryness and everyday comfort.
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="why-card">
-            <div class="why-card-number">04</div>
-
-            <div class="why-icon-img-wrap">
-              <img src="assets/images/ICON4.png" class="why-icon-img" alt="Medical Grade Non-Printed Topsheet">
-            </div>
-
-            <div class="why-title-sm">Medical Grade Non Printed Topsheet</div>
-
-            <div class="why-text">
-              Non-printed topsheet designed with hygiene-focused comfort for sensitive care.
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="why-card">
-            <div class="why-card-number">05</div>
-
-            <div class="why-icon-img-wrap">
-              <img src="assets/images/ICON5.png" class="why-icon-img" alt="Prevents Odour">
-            </div>
-
-            <div class="why-title-sm">Prevents Odour</div>
-
-            <div class="why-text">
-              Freshness-focused protection helps reduce odour concerns during active days.
-            </div>
-          </div>
-        </div>
-
-      </div>
+@endif
 
       <!-- 5 IN 1 TRUST STRIP -->
       <div class="why-protection-strip">
@@ -1031,69 +1006,64 @@
         </div>
 
         <!-- CERTIFICATION CARDS -->
-        <div class="certification-grid">
+        @if(isset($certificateItems) && $certificateItems->count())
 
-          <div class="cert-card">
-            <div class="cert-icon-wrap">
-              <img src="assets/images/certificates/iso-9001.png" alt="ISO 9001:2015 Certification">
+    <div class="certification-grid">
+
+        @foreach($certificateItems as $index => $certificate)
+
+            @php
+                $fallbackLogos = [
+                    asset('assets/images/certificates/iso-9001.png'),
+                    asset('assets/images/certificates/gmp.png'),
+                    asset('assets/images/certificates/nabl.png'),
+                    asset('assets/images/certificates/isi.png'),
+                ];
+
+                $logo = $certificate->getFirstMediaUrl('certificate_logo')
+                    ?: ($fallbackLogos[$index] ?? asset('assets/images/certificates/iso-9001.png'));
+
+                $altText = $certificate->category_label
+                    ?: $certificate->title
+                    ?: 'Certification';
+            @endphp
+
+            <div class="cert-card {{ $certificate->is_featured ? 'active' : '' }}">
+
+                <div class="cert-icon-wrap">
+                    <img src="{{ $logo }}"
+                         alt="{{ $altText }}">
+                </div>
+
+                <div class="cert-card-body">
+                    <h3>{{ $certificate->title }}</h3>
+
+                    @if($certificate->description)
+                        <p>{{ $certificate->description }}</p>
+                    @elseif($certificate->category_label)
+                        <p>{{ $certificate->category_label }}</p>
+                    @else
+                        <p>{{ $certificate->file_type ?: 'Certification Standard' }}</p>
+                    @endif
+                </div>
+
+                <div class="cert-card-mark">
+                    <i class="{{ $certificate->status_icon ?: 'bi bi-check2-circle' }}"></i>
+                </div>
+
             </div>
 
-            <div class="cert-card-body">
-              <h3>ISO 9001:2015</h3>
-              <p>Quality Management System</p>
-            </div>
+        @endforeach
 
-            <div class="cert-card-mark">
-              <i class="bi bi-check2-circle"></i>
-            </div>
-          </div>
+    </div>
 
-          <div class="cert-card">
-            <div class="cert-icon-wrap">
-              <img src="assets/images/certificates/gmp.png" alt="GMP Certification">
-            </div>
+@else
 
-            <div class="cert-card-body">
-              <h3>GMP</h3>
-              <p>Good Manufacturing Practice</p>
-            </div>
+    <div class="text-center py-5">
+        <p class="mb-0">No certifications available.</p>
+    </div>
 
-            <div class="cert-card-mark">
-              <i class="bi bi-check2-circle"></i>
-            </div>
-          </div>
-
-          <div class="cert-card">
-            <div class="cert-icon-wrap">
-              <img src="assets/images/certificates/nabl.png" alt="NABL Certification">
-            </div>
-
-            <div class="cert-card-body">
-              <h3>NABL</h3>
-              <p>Lab Accreditation Standard</p>
-            </div>
-
-            <div class="cert-card-mark">
-              <i class="bi bi-check2-circle"></i>
-            </div>
-          </div>
-
-          <div class="cert-card">
-            <div class="cert-icon-wrap">
-              <img src="assets/images/certificates/isi.png" alt="ISI Certification">
-            </div>
-
-            <div class="cert-card-body">
-              <h3>ISI</h3>
-              <p>Indian Standards Compliance</p>
-            </div>
-
-            <div class="cert-card-mark">
-              <i class="bi bi-check2-circle"></i>
-            </div>
-          </div>
-
-        </div>
+@endif
 
       </div>
 
@@ -1177,218 +1147,128 @@
       </div>
 
       <!-- SLIDER -->
-      <div class="review-slider" id="reviewSlider">
+   @if(isset($reviewItems) && $reviewItems->count())
 
-        <!-- Card 1 -->
-        <article class="review-card">
-          <div class="quote-mark">
-          </div>
+    <div class="review-slider" id="reviewSlider">
 
-          <div class="review-top">
-            <div class="review-user">
-              <div class="avatar">A</div>
+        @foreach($reviewItems as $review)
 
-              <div class="review-user-info">
-                <div class="review-verified">
-                  <i class="bi bi-patch-check-fill"></i>
-                  <div class="review-name">Anjali Sharma</div>
-                </div>
-                <div class="review-designation">
-                  <span>
-                    <i class="bi bi-person-heart"></i>
-                    Homemaker
-                  </span>
-                  <span>
-                    <i class="bi bi-geo-alt-fill"></i>
-                    Patna, Bihar
-                  </span>
-                </div>
-              </div>
-            </div>
+            @php
+                $rating = (float) $review->rating;
 
-            <div class="review-stars" aria-label="5 star rating">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-            </div>
-          </div>
+                $firstLetter = strtoupper(substr($review->name, 0, 1));
 
-          <p class="review-text">
-            “Super soft and comfortable. I felt fresh all day — the absorption is really good.
-            No irritation, and the fit is perfect.”
-          </p>
+                $tagIcon = 'bi bi-bag-heart';
 
-          <div class="review-meta">
-            <span class="review-chip">
-              <i class="bi bi-bag-heart"></i>
-              Regular
-            </span>
-            <span class="review-date">2 weeks ago</span>
-          </div>
-        </article>
+                if ($review->product_tag) {
+                    $tagLower = strtolower($review->product_tag);
 
-        <!-- Card 2 -->
-        <article class="review-card">
-          <div class="quote-mark">
-            <i class="bi bi-quote"></i>
-          </div>
+                    if (str_contains($tagLower, 'cotton')) {
+                        $tagIcon = 'bi bi-feather';
+                    } elseif (str_contains($tagLower, 'xl') || str_contains($tagLower, 'night')) {
+                        $tagIcon = 'bi bi-moon-stars';
+                    } elseif (str_contains($tagLower, 'everyday')) {
+                        $tagIcon = 'bi bi-stars';
+                    }
+                }
+            @endphp
 
-          <div class="review-top">
-            <div class="review-user">
-              <div class="avatar">P</div>
+            <article class="review-card">
 
-              <div>
-                <div class="review-verified">
-                  <i class="bi bi-patch-check-fill"></i>
-                  <div class="review-name">Priya Verma</div>
+                <div class="quote-mark">
+                    <i class="bi bi-quote"></i>
                 </div>
 
-                <div class="review-designation">
-                  <span>
-                    <i class="bi bi-person-heart"></i>
-                    Homemaker
-                  </span>
-                  <span>
-                    <i class="bi bi-geo-alt-fill"></i>
-                    Patna, Bihar
-                  </span>
+                <div class="review-top">
+
+                    <div class="review-user">
+
+                        <div class="avatar">
+                            {{ $firstLetter }}
+                        </div>
+
+                        <div class="review-user-info">
+
+                            <div class="review-verified">
+                                <i class="bi bi-patch-check-fill"></i>
+
+                                <div class="review-name">
+                                    {{ $review->name }}
+                                </div>
+                            </div>
+
+                            <div class="review-designation">
+
+                                <span>
+                                    <i class="bi bi-person-heart"></i>
+                                    {{ $review->buyer_label ?: 'Verified Buyer' }}
+                                </span>
+
+                                <span>
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                    Patna, Bihar
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="review-stars" aria-label="{{ number_format($rating, 1) }} star rating">
+
+                        @for($i = 1; $i <= 5; $i++)
+
+                            @if($rating >= $i)
+                                <i class="bi bi-star-fill"></i>
+                            @elseif($rating >= ($i - 0.5))
+                                <i class="bi bi-star-half"></i>
+                            @else
+                                <i class="bi bi-star"></i>
+                            @endif
+
+                        @endfor
+
+                    </div>
+
                 </div>
-              </div>
-            </div>
 
-            <div class="review-stars" aria-label="4.5 star rating">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-half"></i>
-            </div>
-          </div>
+                @if($review->message)
+                    <p class="review-text">
+                        “{{ $review->message }}”
+                    </p>
+                @endif
 
-          <p class="review-text">
-            “Loved the cotton-soft feel. The wings hold nicely and it doesn’t move.
-            Great for office days and travel.”
-          </p>
+                <div class="review-meta">
 
-          <div class="review-meta">
-            <span class="review-chip">
-              <i class="bi bi-feather"></i>
-              Cotton Soft
-            </span>
-            <span class="review-date">1 month ago</span>
-          </div>
-        </article>
+                    @if($review->product_tag)
+                        <span class="review-chip">
+                            <i class="{{ $tagIcon }}"></i>
+                            {{ $review->product_tag }}
+                        </span>
+                    @endif
 
-        <!-- Card 3 -->
-        <article class="review-card">
-          <div class="quote-mark">
-            <i class="bi bi-quote"></i>
-          </div>
+                    @if($review->review_time)
+                        <span class="review-date">
+                            {{ $review->review_time }}
+                        </span>
+                    @endif
 
-          <div class="review-top">
-            <div class="review-user">
-              <div class="avatar">S</div>
-              <div>
-                <div class="review-verified">
-                  <i class="bi bi-patch-check-fill"></i>
-                  <div class="review-name">Sneha Kumari</div>
                 </div>
 
-                <div class="review-designation">
-                  <span>
-                    <i class="bi bi-person-heart"></i>
-                    Homemaker
-                  </span>
-                  <span>
-                    <i class="bi bi-geo-alt-fill"></i>
-                    Patna, Bihar
-                  </span>
-                </div>
-                <div class="review-verified">
-                  <!-- <i class="bi bi-patch-check-fill"></i> -->
-                </div>
-              </div>
-            </div>
+            </article>
 
-            <div class="review-stars" aria-label="5 star rating">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-            </div>
-          </div>
+        @endforeach
 
-          <p class="review-text">
-            “Best part is leak control. Even overnight I felt confident.
-            Packaging also looks premium.”
-          </p>
+    </div>
 
-          <div class="review-meta">
-            <span class="review-chip">
-              <i class="bi bi-moon-stars"></i>
-              XL / Night
-            </span>
-            <span class="review-date">3 months ago</span>
-          </div>
-        </article>
+@else
 
-        <!-- Card 4 -->
-        <article class="review-card">
-          <div class="quote-mark">
-            <i class="bi bi-quote"></i>
-          </div>
+    <div class="text-center py-5">
+        <p class="mb-0">No customer reviews available.</p>
+    </div>
 
-          <div class="review-top">
-            <div class="review-user">
-              <div class="avatar">N</div>
-              <div>
-                <div class="review-verified">
-                  <i class="bi bi-patch-check-fill"></i>
-                  <div class="review-name">Neha Singh</div>
-                </div>
-                <div class="review-designation">
-                  <span>
-                    <i class="bi bi-person-heart"></i>
-                    Homemaker
-                  </span>
-                  <span>
-                    <i class="bi bi-geo-alt-fill"></i>
-                    Patna, Bihar
-                  </span>
-                </div>
-                <div class="review-verified">
-                  <!-- <i class="bi bi-patch-check-fill"></i> -->
-                </div>
-              </div>
-            </div>
-
-            <div class="review-stars" aria-label="4 star rating">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star"></i>
-            </div>
-          </div>
-
-          <p class="review-text">
-            “Very comfortable. No smell issues and it feels breathable.
-            Would definitely recommend FlyDayz.”
-          </p>
-
-          <div class="review-meta">
-            <span class="review-chip">
-              <i class="bi bi-stars"></i>
-              Everyday
-            </span>
-            <span class="review-date">4 months ago</span>
-          </div>
-        </article>
-
-      </div>
+@endif
 
       <!-- BOTTOM CTA -->
       <div class="reviews-bottom">
@@ -1474,182 +1354,69 @@
 
       </div>
 
-      <!-- FAQ ACCORDION -->
-      <div class="accordion faq-accordion" id="faqAccordion">
+  @if(isset($faqItems) && $faqItems->count())
 
-        <!-- FAQ 1 -->
-        <div class="accordion-item faq-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq1"
-              aria-expanded="true">
-              <span class="faq-ic">
-                <i class="bi bi-rulers"></i>
-              </span>
+    <div class="accordion faq-accordion" id="faqAccordion">
 
-              <span class="faq-question-text">
-                Which FlyDayz size should I choose?
-              </span>
-            </button>
-          </h2>
+        @foreach($faqItems as $index => $faq)
 
-          <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-            <div class="accordion-body faq-answer">
-              <p>
-                Choose based on your flow level and usage time. Regular or Medium works well for everyday daytime
-                comfort,
-                while XL or Overnight is better for heavier flow and night use.
-              </p>
+            @php
+                $faqId = 'homeFaq' . $faq->id;
 
-              <ul class="faq-list">
-                <li><strong>Regular/Medium:</strong> for daily comfort and light-to-medium flow.</li>
-                <li><strong>XL/Overnight:</strong> for heavier flow, longer coverage, or sleeping.</li>
-                <li><strong>Still unsure?</strong> WhatsApp us and we will help you choose.</li>
-              </ul>
+                $isOpen = false;
+
+                if ($faq->is_open) {
+                    $isOpen = true;
+                } elseif ($loop->first) {
+                    $isOpen = true;
+                }
+            @endphp
+
+            <div class="accordion-item faq-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button faq-question {{ $isOpen ? '' : 'collapsed' }}"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#{{ $faqId }}"
+                            aria-expanded="{{ $isOpen ? 'true' : 'false' }}">
+
+                        <span class="faq-ic">
+                            <i class="{{ $faq->question_icon ?: 'bi bi-question-circle' }}"></i>
+                        </span>
+
+                        <span class="faq-question-text">
+                            {{ $faq->question }}
+                        </span>
+
+                    </button>
+
+                </h2>
+
+                <div id="{{ $faqId }}"
+                     class="accordion-collapse collapse {{ $isOpen ? 'show' : '' }}"
+                     data-bs-parent="#faqAccordion">
+
+                    <div class="accordion-body faq-answer">
+                        {!! $faq->answer !!}
+                    </div>
+
+                </div>
+
             </div>
-          </div>
-        </div>
 
-        <!-- FAQ 2 -->
-        <div class="accordion-item faq-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed faq-question" type="button" data-bs-toggle="collapse"
-              data-bs-target="#faq2">
-              <span class="faq-ic">
-                <i class="bi bi-cloud-check"></i>
-              </span>
+        @endforeach
 
-              <span class="faq-question-text">
-                Are FlyDayz pads comfortable for sensitive skin?
-              </span>
-            </button>
-          </h2>
+    </div>
 
-          <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body faq-answer">
-              <p>
-                FlyDayz pads are designed for a soft, skin-friendly feel. If your skin is highly sensitive,
-                start with shorter wear duration, change regularly, and choose the size that gives you better comfort.
-              </p>
-            </div>
-          </div>
-        </div>
+@else
 
-        <!-- FAQ 3 -->
-        <div class="accordion-item faq-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed faq-question" type="button" data-bs-toggle="collapse"
-              data-bs-target="#faq3">
-              <span class="faq-ic">
-                <i class="bi bi-droplet-half"></i>
-              </span>
+    <div class="text-center py-5">
+        <p class="mb-0">No FAQs available.</p>
+    </div>
 
-              <span class="faq-question-text">
-                How long does one pad last?
-              </span>
-            </button>
-          </h2>
-
-          <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body faq-answer">
-              <p>
-                It depends on your flow level and activity. For hygiene and comfort, it is best to change your pad
-                regularly, especially on heavier days. XL or Overnight options are recommended when you need longer
-                coverage.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- FAQ 4 -->
-        <div class="accordion-item faq-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed faq-question" type="button" data-bs-toggle="collapse"
-              data-bs-target="#faq4">
-              <span class="faq-ic">
-                <i class="bi bi-shield-plus"></i>
-              </span>
-
-              <span class="faq-question-text">
-                Do FlyDayz pads help with leak control?
-              </span>
-            </button>
-          </h2>
-
-          <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body faq-answer">
-              <p>
-                FlyDayz pads are designed with absorption support and secure fit to help with better leak control.
-                For extra confidence during heavier flow or night use, choose XL or Overnight variants.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- FAQ 5 -->
-        <div class="accordion-item faq-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed faq-question" type="button" data-bs-toggle="collapse"
-              data-bs-target="#faq5">
-              <span class="faq-ic">
-                <i class="bi bi-box-seam"></i>
-              </span>
-
-              <span class="faq-question-text">
-                How should I store sanitary pads?
-              </span>
-            </button>
-          </h2>
-
-          <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body faq-answer">
-              <p>
-                Store pads in a cool, dry place away from direct sunlight and moisture. Keep the pack sealed when not in
-                use
-                to maintain hygiene and freshness.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- FAQ 6 -->
-        <div class="accordion-item faq-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed faq-question" type="button" data-bs-toggle="collapse"
-              data-bs-target="#faq6">
-              <span class="faq-ic">
-                <i class="bi bi-shop"></i>
-              </span>
-
-              <span class="faq-question-text">
-                Where can I buy FlyDayz pads?
-              </span>
-            </button>
-          </h2>
-
-          <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body faq-answer">
-              <p>
-                You can buy FlyDayz pads through our distribution network and partner stores.
-                For availability in your area, please WhatsApp or call us.
-              </p>
-
-              <div class="faq-answer-actions">
-                <a class="btn faq-btn-primary btn-sm" href="tel:7209770033">
-                  <i class="bi bi-telephone me-2"></i>
-                  Call: 7209770033
-                </a>
-
-                <a class="btn faq-btn-secondary btn-sm" target="_blank"
-                  href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20to%20buy%20FlyDayz%20pads%20near%20me.">
-                  <i class="bi bi-whatsapp me-2"></i>
-                  WhatsApp
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
+@endif
 
       <!-- BOTTOM CTA -->
       <div class="faq-bottom-card">

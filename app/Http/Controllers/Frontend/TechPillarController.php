@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\TechPillar;
+use App\Models\Product;
+use App\Models\ProductSizeCategory;
 
 class TechPillarController extends Controller
 {
@@ -15,6 +17,9 @@ class TechPillarController extends Controller
             ->orderBy('id')
             ->get();
 
-        return view('frontend.technology', compact('techPillars'));
+        $sizeCategories = ProductSizeCategory::query()->where('status', true)->orderBy('sort_order')->get();
+        $products = Product::query()->with(['sizeCategory', 'protectionType', 'media'])->where('status', true)->orderBy('sort_order')->get();
+
+        return view('frontend.technology', compact('techPillars', 'sizeCategories', 'products'));
     }
 }

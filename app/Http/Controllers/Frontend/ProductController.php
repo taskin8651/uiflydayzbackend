@@ -41,7 +41,7 @@ class ProductController extends Controller
             ->orderBy('id')
             ->get();
 
-        return view('frontend.products', compact('products', 'sizeCategories', 'protectionTypes'));
+        return view('frontend.product', compact('products', 'sizeCategories', 'protectionTypes'));
     }
 
     public function show($slug)
