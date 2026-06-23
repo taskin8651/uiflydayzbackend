@@ -128,6 +128,7 @@
 
 
     <!-- ===================== CATEGORY-WISE TERMS ===================== -->
+    @if(false) {{-- Legacy static terms content --}}
     <section class="section tc-policy-section" id="termsLibrary">
         <div class="container">
 
@@ -631,6 +632,8 @@
 
 
     <!-- ===================== TERMS CTA ===================== -->
+    @endif
+    <section class="section tc-policy-section" id="termsLibrary"><div class="container"><div class="tc-policy-head"><div><div class="tc-kicker"><span><i class="bi bi-grid-3x3-gap-fill"></i></span> Category-Wise Terms</div><h2>Browse Terms & Conditions by Topic</h2><p>Select a category to quickly understand the applicable website and business terms.</p></div><div class="tc-policy-count"><strong>{{ $termsSections->count() }}</strong><span>Terms Categories</span></div></div>@if($termsSections->isNotEmpty())<div class="tc-policy-layout"><aside class="tc-category-panel" aria-label="Terms categories">@foreach($termsSections as $index => $section)<button class="tc-category-btn {{ $index === 0 ? 'active' : '' }}" type="button" data-terms-target="{{ $section->slug }}"><span><i class="{{ $section->icon_class }}"></i></span><div><strong>{{ $section->title }}</strong><small>{{ $section->subtitle }}</small></div><i class="bi bi-chevron-right"></i></button>@endforeach</aside><div class="tc-content-panel">@foreach($termsSections as $index => $section)@php($content = str_replace(['{{ $websiteSettings->phone_url }}', '{{ $websiteSettings->primary_phone }}', '{{ $websiteSettings->whatsappUrl() }}'], [$websiteSettings->phone_url, $websiteSettings->primary_phone, $websiteSettings->whatsappUrl()], $section->content))<article class="tc-policy-content {{ $index === 0 ? 'active' : '' }}" data-terms-panel="{{ $section->slug }}">{!! $content !!}</article>@endforeach</div></div>@else<div class="tc-info-box"><i class="bi bi-info-circle-fill"></i><div><strong>Terms content coming soon</strong><span>Add terms sections from the admin panel.</span></div></div>@endif</div></section>
     <section class="section tc-cta-section" id="termsContact">
         <div class="container">
 

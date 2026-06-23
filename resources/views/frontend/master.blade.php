@@ -38,10 +38,10 @@
     <div class="preloader-bg-glow glow-one"></div>
     <div class="preloader-bg-glow glow-two"></div>
 
-    <img src="assets/images/decor/cotton-1.png" class="preloader-decor preloader-cotton cotton-a" alt="">
-    <img src="assets/images/decor/cotton-2.png" class="preloader-decor preloader-cotton cotton-b" alt="">
-    <img src="assets/images/decor/petal-1.png" class="preloader-decor preloader-petal petal-a" alt="">
-    <img src="assets/images/decor/petal-2.png" class="preloader-decor preloader-petal petal-b" alt="">
+    <img src="assets/images/decor/pad-outline-1.png" class="preloader-decor preloader-cotton cotton-a" alt="">
+    <img src="assets/images/decor/pad-outline-2.png" class="preloader-decor preloader-cotton cotton-b" alt="">
+    <img src="assets/images/decor/pad-outline-1.png" class="preloader-decor preloader-petal petal-a" alt="">
+    <img src="assets/images/decor/pad-outline-2.png" class="preloader-decor preloader-petal petal-b" alt="">
 
     <div class="preloader-card">
 

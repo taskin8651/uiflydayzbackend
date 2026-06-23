@@ -25,7 +25,7 @@ class WebsiteSettingController extends Controller
             'tagline' => ['nullable', 'string', 'max:255'],
             'footer_description' => ['nullable', 'string'],
             'copyright_text' => ['nullable', 'string', 'max:255'],
-            'visitor_count' => ['nullable', 'integer', 'min:0'],
+            'visitor_increment' => ['nullable', 'integer', 'min:0'],
 
             'primary_phone' => ['nullable', 'string', 'max:50'],
             'secondary_phone' => ['nullable', 'string', 'max:50'],
@@ -68,7 +68,6 @@ class WebsiteSettingController extends Controller
             'tagline',
             'footer_description',
             'copyright_text',
-            'visitor_count',
 
             'primary_phone',
             'secondary_phone',
@@ -99,6 +98,10 @@ class WebsiteSettingController extends Controller
             'facebook_pixel_code',
             'schema_json',
         ]));
+
+        if ($request->integer('visitor_increment') > 0) {
+            $websiteSetting->increment('visitor_count', $request->integer('visitor_increment'));
+        }
 
         foreach (['header_logo', 'footer_logo', 'favicon', 'og_image'] as $collection) {
             if ($request->hasFile($collection)) {

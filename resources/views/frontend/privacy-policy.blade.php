@@ -73,6 +73,7 @@
             </div>
         </div>
     </section>
+    @if(false) {{-- Legacy static policy content --}}
     <section class="section pp-policy-section" id="privacyPolicy">
         <div class="container">
             <div class="pp-policy-head">
@@ -333,6 +334,8 @@
             </div>
         </div>
     </section>
+
+    
     <section class="section pp-principles">
         <div class="container">
             <div class="pp-section-head text-center">
@@ -370,6 +373,15 @@
                     </article>
                 </div>
             </div>
+        </div>
+    </section>
+    @endif
+    <section class="section pp-policy-section" id="privacyPolicy">
+        <div class="container">
+            <div class="pp-policy-head"><div><div class="pp-kicker"><span><i class="bi bi-grid-3x3-gap-fill"></i></span> Category-Wise Policy</div><h2>Browse the Privacy Policy by Topic</h2><p>Select a category to quickly understand how information is handled.</p></div><div class="pp-policy-count"><strong>{{ $privacySections->count() }}</strong><span>Policy Categories</span></div></div>
+            @if($privacySections->isNotEmpty())
+            <div class="pp-policy-layout"><aside class="pp-category-panel">@foreach($privacySections as $index => $section)<button class="pp-category-btn {{ $index === 0 ? 'active' : '' }}" data-privacy-target="{{ $section->slug }}"><span><i class="{{ $section->icon_class }}"></i></span><div><strong>{{ $section->title }}</strong><small>{{ $section->subtitle }}</small></div><i class="bi bi-chevron-right"></i></button>@endforeach</aside><div class="pp-content-panel">@foreach($privacySections as $index => $section)@php($content = str_replace(['{{ $websiteSettings->phone_url }}', '{{ $websiteSettings->primary_phone }}', '{{ $websiteSettings->whatsappUrl() }}'], [$websiteSettings->phone_url, $websiteSettings->primary_phone, $websiteSettings->whatsappUrl()], $section->content))<article class="pp-policy-content {{ $index === 0 ? 'active' : '' }}" data-privacy-panel="{{ $section->slug }}">{!! $content !!}</article>@endforeach</div></div>
+            @else <div class="pp-info-box"><i class="bi bi-info-circle-fill"></i><div><strong>Policy content coming soon</strong><span>Add privacy policy sections from the admin panel.</span></div></div> @endif
         </div>
     </section>
     <section class="section pp-cta-section">

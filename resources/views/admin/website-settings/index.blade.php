@@ -86,12 +86,20 @@
                 </div>
 
                 <div class="field-group">
-                    <label class="field-label">Visitor Counter</label>
+                    <label class="field-label">Current Visitor Total</label>
                     <div class="input-icon-wrap">
                         <i class="fas fa-eye icon"></i>
-                        <input type="number" min="0" name="visitor_count" value="{{ old('visitor_count', $websiteSetting->visitor_count) }}" class="field-input">
+                        <input type="text" value="{{ number_format($websiteSetting->visitor_count) }}" class="field-input" readonly>
                     </div>
-                    <p class="field-hint">Set the starting total. Each new website browser session increases this number by 1.</p>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label">Add Visitors Manually</label>
+                    <div class="input-icon-wrap">
+                        <i class="fas fa-plus-circle icon"></i>
+                        <input type="number" min="0" name="visitor_increment" value="{{ old('visitor_increment', 0) }}" class="field-input" placeholder="Example: 100">
+                    </div>
+                    <p class="field-hint">This number current visitor total mein add hoga. Existing count reset nahi hoga.</p>
                 </div>
 
             </div>

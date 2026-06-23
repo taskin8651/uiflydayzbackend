@@ -270,6 +270,17 @@
         <i class="fas fa-cog nav-icon"></i>
         <span class="nav-label">Website Settings</span>
     </a>
+
+    <a href="{{ route('admin.privacy-policy-sections.index') }}"
+       class="nav-link {{ request()->is('admin/privacy-policy-sections*') ? 'active' : '' }}"
+       data-tooltip="Privacy Policy">
+        <i class="fas fa-shield-alt nav-icon"></i>
+        <span class="nav-label">Privacy Policy</span>
+    </a>
+
+    <a href="{{ route('admin.terms-condition-sections.index') }}" class="nav-link {{ request()->is('admin/terms-condition-sections*') ? 'active' : '' }}" data-tooltip="Terms & Conditions">
+        <i class="fas fa-file-contract nav-icon"></i><span class="nav-label">Terms & Conditions</span>
+    </a>
     </nav>
 
     {{-- LOGOUT --}}

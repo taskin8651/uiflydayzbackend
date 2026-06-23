@@ -66,6 +66,8 @@ Route::resource('contact-enquiries', 'ContactEnquiryController', ['except' => ['
 // Website Settings
 Route::get('website-settings', 'WebsiteSettingController@index')->name('website-settings.index');
 Route::put('website-settings', 'WebsiteSettingController@update')->name('website-settings.update');
+Route::resource('privacy-policy-sections', 'PrivacyPolicySectionController')->except('show');
+Route::resource('terms-condition-sections', 'TermsConditionSectionController')->except('show');
 
  // FAQ Items
     Route::delete('faq-items/destroy', 'FaqItemController@massDestroy')->name('faq-items.massDestroy');
@@ -114,5 +116,5 @@ Route::post('distributor-enquiry', [App\Http\Controllers\Frontend\DistributorEnq
 Route::get('/contacts', [App\Http\Controllers\Frontend\ContactEnquiryController::class, 'index'])->name('contact');
 Route::post('contact-enquiry', [App\Http\Controllers\Frontend\ContactEnquiryController::class, 'store'])->name('contact-enquiry.store');
 Route::get('/faqs', [App\Http\Controllers\Frontend\FaqController::class, 'index'])->name('faqs');
-Route::view('/privacy-policy', 'frontend.privacy-policy')->name('privacy');
-Route::view('/terms-and-conditions', 'frontend.term-condition')->name('terms');
+Route::get('/privacy-policy', [App\Http\Controllers\Frontend\PrivacyPolicyController::class, 'index'])->name('privacy');
+Route::get('/terms-and-conditions', [App\Http\Controllers\Frontend\TermsConditionController::class, 'index'])->name('terms');
