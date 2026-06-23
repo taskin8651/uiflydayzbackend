@@ -16,7 +16,7 @@
                             business support.</p>
                         <div class="dist-actions"><a href="#apply" class="dist-btn primary">Apply for Distributorship <i
                                     class="bi bi-arrow-right-short"></i></a><a target="_blank"
-                                href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20to%20become%20a%20distributor."
+                                href="{{ $websiteSettings->whatsappUrl('Hi ' . $websiteSettings->website_name . ' Team, I want to become a distributor.') }}"
                                 class="dist-btn light"><i class="bi bi-whatsapp"></i>WhatsApp</a></div>
                         <div class="dist-trust"><span><i class="bi bi-patch-check-fill"></i>Premium range</span><span><i
                                     class="bi bi-box-seam-fill"></i>Bulk support</span><span><i
@@ -245,10 +245,12 @@
                                     class="bi bi-send-fill"></i></span>Distributor Application</div>
                         <h2>Tell Us About Your Business</h2>
                         <p>Submit the form and your enquiry will open directly in WhatsApp.</p>
-                        <div class="dist-contact-cards"><a href="tel:7209770033"><i
+                        <div class="dist-contact-cards">
+                            <a href="{{ $websiteSettings->phone_url }}"><i
                                     class="bi bi-telephone-fill"></i><span><small>Call Our
-                                        Team</small><strong>7209770033</strong></span></a><a target="_blank"
-                                href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20distributorship%20details."><i
+                                        Team</small><strong>{{ $websiteSettings->primary_phone }}</strong></span></a>
+                                        <a target="_blank"
+                                href="{{ $websiteSettings->whatsappUrl('Hi ' . $websiteSettings->website_name . ' Team, I want to become a distributor.') }}"><i
                                     class="bi bi-whatsapp"></i><span><small>WhatsApp Support</small><strong>Chat With
                                         Us</strong></span></a></div>
                         <div class="dist-hours"><i class="bi bi-clock-history"></i>

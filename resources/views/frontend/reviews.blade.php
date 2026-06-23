@@ -338,12 +338,12 @@
             </div>
 
             <a class="btn btn-brand w-100 mt-3" target="_blank"
-               href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20to%20share%20my%20review.">
+                href="{{ $websiteSettings->whatsappUrl() }}">
               <i class="bi bi-whatsapp me-2"></i>Send Review on WhatsApp
             </a>
 
-            <a class="btn btn-outline-dark w-100 mt-2" href="tel:7209770033">
-              <i class="bi bi-telephone me-2"></i>Call 7209770033
+            <a class="btn btn-outline-dark w-100 mt-2" href="{{ $websiteSettings->phone_url }}">
+              <i class="bi bi-telephone me-2"></i>Call {{ $websiteSettings->primary_phone }}
             </a>
           </div>
         </div>
@@ -374,12 +374,12 @@
       </div>
 
       <div class="d-flex flex-wrap gap-2">
-        <a class="btn btn-brand" href="tel:7209770033">
-          <i class="bi bi-telephone me-2"></i>Call 7209770033
+        <a class="btn btn-brand" href="{{ $websiteSettings->phone_url }}">
+          <i class="bi bi-telephone me-2"></i>Call {{ $websiteSettings->primary_phone }}
         </a>
 
         <a class="btn btn-outline-dark" target="_blank"
-           href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20product%20details.">
+           href="{{ $websiteSettings->whatsappUrl() }}">
           <i class="bi bi-whatsapp me-2"></i>WhatsApp
         </a>
       </div>

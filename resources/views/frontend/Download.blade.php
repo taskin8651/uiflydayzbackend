@@ -238,8 +238,8 @@
         <p>Contact FlyDayz for product details, business documents, bulk enquiries or distributorship support.</p>
       </div>
       <div class="dl-help-actions">
-        <a href="tel:7209770033" class="dl-btn-primary"><i class="bi bi-telephone"></i> Call 7209770033</a>
-        <a target="_blank" href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20need%20a%20catalogue%20or%20download%20document." class="dl-whatsapp"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+        <a href="{{ $websiteSettings->phone_url }}" class="dl-btn-primary"><i class="bi bi-telephone"></i> Call {{ $websiteSettings->primary_phone }}</a>
+        <a target="_blank" href="{{ $websiteSettings->whatsappUrl() }}" class="dl-whatsapp"><i class="bi bi-whatsapp"></i> WhatsApp</a>
       </div>
     </div>
   </div>

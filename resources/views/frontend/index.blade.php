@@ -727,7 +727,7 @@
             </a>
 
             <a class="btn feature-btn-secondary" target="_blank"
-              href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20to%20know%20more%20about%20FlyDayz%20technology.">
+              href="{{ $websiteSettings->whatsappUrl() }}">
               <i class="bi bi-whatsapp me-2"></i>
               Ask on WhatsApp
             </a>
@@ -957,7 +957,7 @@
           </a>
 
           <a class="btn why-btn-secondary" target="_blank"
-            href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20more%20details.">
+            href="{{ $websiteSettings->whatsappUrl() }}">
             <i class="bi bi-whatsapp me-2"></i>
             WhatsApp
           </a>
@@ -1288,7 +1288,7 @@
         </div>
 
         <a class="btn reviews-btn-primary" target="_blank"
-          href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20to%20share%20my%20review.">
+          href="{{ $websiteSettings->whatsappUrl() }}">
           <i class="bi bi-whatsapp me-2"></i>
           Send Review
         </a>
@@ -1347,7 +1347,7 @@
         </div>
 
         <a class="btn faq-btn-primary" target="_blank"
-          href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20need%20help%20choosing%20the%20right%20pad%20size.">
+          href="{{ $websiteSettings->whatsappUrl() }}">
           <i class="bi bi-whatsapp me-2"></i>
           Ask on WhatsApp
         </a>
@@ -1435,7 +1435,7 @@
         </div>
 
         <a class="btn faq-btn-primary" target="_blank"
-          href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20have%20a%20question%20about%20FlyDayz%20pads.">
+          href="{{ $websiteSettings->whatsappUrl() }}">
           <i class="bi bi-whatsapp me-2"></i>
           Chat Now
         </a>
@@ -1514,13 +1514,13 @@
 
           <div class="contact-actions">
 
-            <a class="btn contact-btn-primary" href="tel:7209770033">
+            <a class="btn contact-btn-primary" href="{{ $websiteSettings->phone_url }}">
               <i class="bi bi-telephone me-2"></i>
-              Call 7209770033
+              Call {{ $websiteSettings->primary_phone }}
             </a>
 
             <a class="btn contact-btn-secondary" target="_blank"
-              href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20am%20interested%20in%20distributorship.">
+              href="{{ $websiteSettings->whatsappUrl() }}">
               <i class="bi bi-whatsapp me-2"></i>
               WhatsApp
             </a>
@@ -1559,8 +1559,8 @@
                 <img src="assets/images/call.png" alt="Call FlyDayz" class="contact-call-img">
               </div>
 
-              <a href="tel:7209770033" class="contact-number">
-                7209770033
+              <a href="{{ $websiteSettings->phone_url }}" class="contact-number">
+                {{ $websiteSettings->primary_phone }}
               </a>
 
               <p>
@@ -1651,13 +1651,13 @@
             <!-- CARD ACTIONS -->
             <div class="contact-card-actions">
 
-              <a class="btn contact-btn-primary w-100" href="tel:7209770033">
+              <a class="btn contact-btn-primary w-100" href="{{ $websiteSettings->phone_url }}">
                 <i class="bi bi-telephone me-2"></i>
                 Call Now
               </a>
 
               <a class="btn contact-btn-whatsapp w-100" target="_blank"
-                href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20to%20become%20a%20distributor.">
+                href="{{ $websiteSettings->whatsappUrl() }}">
                 <i class="bi bi-whatsapp me-2"></i>
                 Chat on WhatsApp
               </a>

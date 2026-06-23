@@ -43,7 +43,7 @@
           </a>
 
           <a class="btn btn-outline-dark" target="_blank"
-             href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20have%20a%20question%20about%20FlyDayz%20pads.">
+             href="{{ $websiteSettings->whatsappUrl() }}">
             <i class="bi bi-whatsapp me-2"></i>Ask on WhatsApp
           </a>
         </div>
@@ -287,7 +287,7 @@
           </p>
 
           <a class="btn btn-brand btn-sm" target="_blank"
-             href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20need%20help%20choosing%20pad%20size.">
+             href="{{ $websiteSettings->whatsappUrl() }}">
             Ask Now
           </a>
         </div>
@@ -306,7 +306,7 @@
           </p>
 
           <a class="btn btn-brand btn-sm" target="_blank"
-             href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20product%20details.">
+             href="{{ $websiteSettings->whatsappUrl() }}">
             Get Details
           </a>
         </div>
@@ -325,7 +325,7 @@
           </p>
 
           <a class="btn btn-brand btn-sm" target="_blank"
-             href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20distributorship%20details.">
+             href="{{ $websiteSettings->whatsappUrl() }}">
             Partner With Us
           </a>
         </div>
@@ -360,12 +360,12 @@
       </div>
 
       <div class="d-flex flex-wrap gap-2">
-        <a class="btn btn-brand" href="tel:7209770033">
-          <i class="bi bi-telephone me-2"></i>Call 7209770033
+        <a class="btn btn-brand" href="{{ $websiteSettings->phone_url }}">
+          <i class="bi bi-telephone me-2"></i>Call {{ $websiteSettings->primary_phone }}
         </a>
 
         <a class="btn btn-outline-dark" target="_blank"
-           href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20have%20a%20question%20about%20FlyDayz%20pads.">
+           href="{{ $websiteSettings->whatsappUrl() }}">
           <i class="bi bi-whatsapp me-2"></i>WhatsApp
         </a>
       </div>

@@ -549,7 +549,7 @@
       'phone' => $websiteSettings->primary_phone,
       'phoneUrl' => $websiteSettings->phone_url,
       'email' => $websiteSettings->email,
-      'whatsappUrl' => $websiteSettings->whatsappUrl('Hi ' . $websiteSettings->website_name . ' Team, I need help.'),
+      'whatsappNumber' => preg_replace('/\D+/', '', (string) $websiteSettings->whatsapp_number),
       'logoUrl' => $websiteSettings->header_logo_url,
       'footerDescription' => $websiteSettings->footer_description,
       'copyright' => $websiteSettings->copyright_text,
@@ -560,21 +560,19 @@
     document.addEventListener('DOMContentLoaded', function () {
       const settings = window.flydayzSettings;
       document.querySelectorAll('a[href^="tel:"]').forEach(link => link.href = settings.phoneUrl);
-      document.querySelectorAll('a[href*="wa.me/"]').forEach(link => link.href = settings.whatsappUrl);
+      document.querySelectorAll('a[href*="wa.me/"]').forEach(link => {
+        try {
+          const whatsappLink = new URL(link.href);
+          whatsappLink.pathname = '/' + settings.whatsappNumber;
+          link.href = whatsappLink.toString();
+        } catch (error) {}
+      });
       document.querySelectorAll('a[href^="mailto:"]').forEach(link => link.href = 'mailto:' + (settings.email || ''));
       document.querySelectorAll('img[src*="assets/images/hero/logo.png"]').forEach(image => image.src = settings.logoUrl);
       const footerAbout = document.querySelector('.footer-about');
       if (footerAbout && settings.footerDescription) footerAbout.textContent = settings.footerDescription;
       const footerCopy = document.querySelector('.footer-copy');
       if (footerCopy && settings.copyright) footerCopy.textContent = settings.copyright;
-      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-      const nodes = [];
-      while (walker.nextNode()) nodes.push(walker.currentNode);
-      nodes.forEach(node => {
-        if (!['SCRIPT', 'STYLE'].includes(node.parentElement?.tagName)) {
-          node.nodeValue = node.nodeValue.replace(/7209770033/g, settings.phone || '').replace(/917209770033/g, '');
-        }
-      });
     });
   </script>
   @if($websiteSettings->google_analytics_code){!! $websiteSettings->google_analytics_code !!}@endif

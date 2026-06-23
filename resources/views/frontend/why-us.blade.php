@@ -340,7 +340,7 @@
                 </a>
 
                 <a class="btn btn-outline-dark" target="_blank"
-                   href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20to%20know%20more%20about%20FlyDayz.">
+                   href="{{ $websiteSettings->whatsappUrl() }}">
                     <i class="bi bi-whatsapp me-2"></i>
                     Connect With Us
                 </a>
@@ -526,7 +526,7 @@
         </div>
         <div class="wy-cta-actions"><a href="{{ route('products') }}" class="wy-btn-primary"><i class="bi bi-bag-heart"></i>
             Explore Products</a><a target="_blank"
-            href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20more%20details%20about%20FlyDayz."
+            href="{{ $websiteSettings->whatsappUrl() }}"
             class="wy-whatsapp"><i class="bi bi-whatsapp"></i> WhatsApp</a></div>
       </div>
     </div>

@@ -407,13 +407,13 @@
             <p>Send your name, role, city, experience and resume.</p>
 
             <a target="_blank"
-               href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20to%20apply%20for%20a%20career%20opportunity."
+               href="{{ $websiteSettings->whatsappUrl() }}"
                class="career-whatsapp-btn">
               <i class="bi bi-whatsapp"></i> Send Profile
             </a>
 
-            <a href="tel:7209770033" class="career-call-link">
-              <i class="bi bi-telephone"></i> Call 7209770033
+            <a href="{{ $websiteSettings->phone_url }}" class="career-call-link">
+              <i class="bi bi-telephone"></i> Call {{ $websiteSettings->primary_phone }}
             </a>
           </div>
         </div>

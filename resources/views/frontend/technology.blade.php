@@ -1065,7 +1065,7 @@
           </a>
 
           <a target="_blank"
-             href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20need%20help%20choosing%20the%20right%20FlyDayz%20product."
+             href="{{ $websiteSettings->whatsappUrl() }}"
              class="tech-whatsapp-btn">
 
             <i class="bi bi-whatsapp"></i>

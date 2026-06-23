@@ -537,7 +537,7 @@
                                 <span><i class="bi bi-telephone"></i></span>
                                 <div>
                                     <small>Phone</small>
-                                    <a href="tel:7209770033">7209770033</a>
+                                    <a href="{{ $websiteSettings->phone_url }}">{{ $websiteSettings->primary_phone }}</a>
                                 </div>
                             </div>
 
@@ -546,7 +546,7 @@
                                 <div>
                                     <small>WhatsApp</small>
                                     <a target="_blank"
-                                        href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20have%20a%20Terms%20and%20Conditions%20question.">
+                                        href="{{ $websiteSettings->whatsappUrl() }}">
                                         Ask about these terms
                                     </a>
                                 </div>
@@ -650,12 +650,12 @@
                 </div>
 
                 <div class="tc-cta-actions">
-                    <a href="tel:7209770033" class="tc-btn-primary">
-                        <i class="bi bi-telephone"></i> Call 7209770033
+                    <a href="{{ $websiteSettings->phone_url }}" class="tc-btn-primary">
+                        <i class="bi bi-telephone"></i> Call {{ $websiteSettings->primary_phone }}
                     </a>
 
                     <a target="_blank"
-                        href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20have%20a%20Terms%20and%20Conditions%20question."
+                        href="{{ $websiteSettings->whatsappUrl() }}"
                         class="tc-whatsapp-btn">
                         <i class="bi bi-whatsapp"></i> WhatsApp
                     </a>

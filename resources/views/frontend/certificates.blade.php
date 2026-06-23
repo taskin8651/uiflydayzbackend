@@ -359,12 +359,12 @@
             </div>
 
             <div class="cf-verify-actions">
-              <a href="tel:7209770033" class="cf-btn-primary">
-                <i class="bi bi-telephone"></i> Call 7209770033
+              <a href="{{ $websiteSettings->phone_url }}" class="cf-btn-primary">
+                <i class="bi bi-telephone"></i> Call {{ $websiteSettings->primary_phone }}
               </a>
 
               <a target="_blank"
-                 href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20to%20verify%20a%20certificate."
+                 href="{{ $websiteSettings->whatsappUrl() }}"
                  class="cf-whatsapp-btn">
                 <i class="bi bi-whatsapp"></i> Verify on WhatsApp
               </a>
@@ -431,7 +431,7 @@
         </a>
 
         <a target="_blank"
-           href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20need%20certification%20documents."
+           href="{{ $websiteSettings->whatsappUrl() }}"
            class="cf-whatsapp-btn">
           <i class="bi bi-whatsapp"></i> WhatsApp
         </a>

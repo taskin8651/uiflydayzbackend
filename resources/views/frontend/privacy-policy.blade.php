@@ -313,11 +313,11 @@
                         <p>Contact FlyDayz if you have a privacy question, correction request or complaint.</p>
                         <div class="pp-contact-card">
                             <div class="pp-contact-row"><span><i class="bi bi-telephone"></i></span>
-                                <div><small>Phone</small><a href="tel:7209770033">7209770033</a></div>
+                                <div><small>Phone</small><a href="{{ $websiteSettings->phone_url }}">{{ $websiteSettings->primary_phone }}</a></div>
                             </div>
                             <div class="pp-contact-row"><span><i class="bi bi-whatsapp"></i></span>
                                 <div><small>WhatsApp</small><a target="_blank"
-                                        href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20have%20a%20privacy%20policy%20question.">Send
+                                        href="{{ $websiteSettings->whatsappUrl() }}">Send
                                         a privacy enquiry</a></div>
                             </div>
                             <div class="pp-contact-row"><span><i class="bi bi-clock"></i></span>
@@ -381,9 +381,9 @@
                     <p>Contact the FlyDayz team for privacy questions, correction requests, communication preferences or
                         data-related assistance.</p>
                 </div>
-                <div class="pp-cta-actions"><a href="tel:7209770033" class="pp-btn-primary"><i
-                            class="bi bi-telephone"></i> Call 7209770033</a><a target="_blank"
-                        href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20have%20a%20privacy%20policy%20question."
+                <div class="pp-cta-actions"><a href="{{ $websiteSettings->phone_url }}" class="pp-btn-primary"><i
+                            class="bi bi-telephone"></i> Call {{ $websiteSettings->primary_phone }}</a><a target="_blank"
+                        href="{{ $websiteSettings->whatsappUrl() }}"
                         class="pp-whatsapp-btn"><i class="bi bi-whatsapp"></i> WhatsApp</a></div>
             </div>
         </div>

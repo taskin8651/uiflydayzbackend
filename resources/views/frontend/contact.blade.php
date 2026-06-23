@@ -36,12 +36,12 @@
         </p>
 
         <div class="d-flex flex-wrap gap-2 contact-page-reveal" style="--d:.30s">
-          <a class="btn btn-brand" href="tel:7209770033">
-            <i class="bi bi-telephone me-2"></i>Call 7209770033
+          <a class="btn btn-brand" href="{{ $websiteSettings->phone_url }}">
+            <i class="bi bi-telephone me-2"></i>Call {{ $websiteSettings->primary_phone }}
           </a>
 
           <a class="btn btn-outline-dark" target="_blank"
-             href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20to%20contact%20you.">
+             href="{{ $websiteSettings->whatsappUrl() }}">
             <i class="bi bi-whatsapp me-2"></i>WhatsApp Now
           </a>
         </div>
@@ -67,7 +67,7 @@
             </div>
             <div>
               <h6>Quick Support</h6>
-              <a href="tel:7209770033">7209770033</a>
+              <a href="{{ $websiteSettings->phone_url }}">{{ $websiteSettings->primary_phone }}</a>
               <p>Available for product, bulk order and distributorship enquiries.</p>
             </div>
           </div>
@@ -109,7 +109,7 @@
           </div>
           <h5>Call Us</h5>
           <p>Speak directly with our team for quick assistance.</p>
-          <a class="btn btn-brand btn-sm" href="tel:7209770033">
+          <a class="btn btn-brand btn-sm" href="{{ $websiteSettings->phone_url }}">
             Call Now
           </a>
         </div>
@@ -123,7 +123,7 @@
           <h5>WhatsApp</h5>
           <p>Chat with us for product details and availability.</p>
           <a class="btn btn-brand btn-sm" target="_blank"
-             href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20product%20details.">
+             href="{{ $websiteSettings->whatsappUrl() }}">
             Chat Now
           </a>
         </div>
@@ -137,7 +137,7 @@
           <h5>Product Enquiry</h5>
           <p>Know about Regular, XL, Overnight and Pocket Pack.</p>
           <a class="btn btn-brand btn-sm" target="_blank"
-             href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20FlyDayz%20product%20details.">
+             href="{{ $websiteSettings->whatsappUrl() }}">
             Get Details
           </a>
         </div>
@@ -190,7 +190,7 @@
               </div>
               <div>
                 <h6>Phone</h6>
-                <a href="tel:7209770033">7209770033</a>
+                <a href="{{ $websiteSettings->phone_url }}">{{ $websiteSettings->primary_phone }}</a>
               </div>
             </div>
 
@@ -200,7 +200,7 @@
               </div>
               <div>
                 <h6>WhatsApp</h6>
-                <a target="_blank" href="https://wa.me/917209770033">Chat with FlyDayz</a>
+                <a target="_blank" href="{{ $websiteSettings->whatsappUrl() }}">Chat with {{ $websiteSettings->website_name }}</a>
               </div>
             </div>
 
@@ -360,11 +360,11 @@
 
         <div class="d-flex flex-wrap gap-2 mt-4">
           <a class="btn btn-brand" target="_blank"
-             href="https://wa.me/917209770033?text=Hi%20FlyDayz%20Team%2C%20I%20want%20distributorship%20details.">
+             href="{{ $websiteSettings->whatsappUrl() }}">
             <i class="bi bi-whatsapp me-2"></i>Get Distributorship Details
           </a>
 
-          <a class="btn btn-outline-dark" href="tel:7209770033">
+          <a class="btn btn-outline-dark" href="{{ $websiteSettings->phone_url }}">
             <i class="bi bi-telephone me-2"></i>Call Now
           </a>
         </div>
@@ -405,7 +405,7 @@
               <div class="location-icon"><i class="bi bi-telephone"></i></div>
               <div>
                 <h6>Phone</h6>
-                <a href="tel:7209770033">7209770033</a>
+                <a href="{{ $websiteSettings->phone_url }}">{{ $websiteSettings->primary_phone }}</a>
               </div>
             </div>
 
@@ -413,7 +413,7 @@
               <div class="location-icon"><i class="bi bi-whatsapp"></i></div>
               <div>
                 <h6>WhatsApp</h6>
-                <a target="_blank" href="https://wa.me/917209770033">Chat with us</a>
+                <a target="_blank" href="{{ $websiteSettings->whatsappUrl() }}">Chat with us</a>
               </div>
             </div>
           </div>
