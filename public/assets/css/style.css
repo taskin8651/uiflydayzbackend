@@ -38505,13 +38505,13 @@ html {
 
 .about-floating-card-one {
   left: -8px;
-  top: 95px;
+  top: 125px;
   animation: aboutCardFloatOne 4s ease-in-out infinite alternate;
 }
 
 .about-floating-card-two {
   right: -5px;
-  bottom: 90px;
+  bottom: 160px;
   animation: aboutCardFloatTwo 4.5s ease-in-out infinite alternate;
 }
 
@@ -42642,7 +42642,7 @@ html {
 
   color: #929aaa;
 
-  font-size: 7px;
+  font-size: 9px;
   line-height: 1;
   font-weight: 850;
 
@@ -42730,7 +42730,7 @@ html {
 
   color: #ffffff;
 
-  font-size: 8px;
+  font-size: 12px;
   line-height: 1;
   font-weight: 900;
 
@@ -42757,7 +42757,7 @@ html {
   margin: 0;
   color: rgba(255, 255, 255, 0.78);
 
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.55;
 }
 
@@ -42777,7 +42777,7 @@ html {
   min-height: 40px;
   padding: 0 13px;
 
-  font-size: 8.5px;
+  font-size: 12px;
 }
 
 
