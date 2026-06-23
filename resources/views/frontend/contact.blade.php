@@ -420,14 +420,38 @@
         </div>
 
         <div class="col-lg-7">
-          <div class="map-placeholder">
-            <div>
-              <i class="bi bi-geo-alt-fill"></i>
-              <h5>Map Placeholder</h5>
-              <p>Add your Google Map iframe here when location is ready.</p>
+    <div class="map-placeholder fly-map-box">
+
+        @if(!empty($websiteSettings->google_map_embed))
+
+            {!! $websiteSettings->google_map_embed !!}
+
+        @else
+
+            <div class="fly-map-empty">
+                <i class="bi bi-geo-alt-fill"></i>
+                <h5>Map Not Available</h5>
+
+                @if($websiteSettings->address)
+                    <p>{{ $websiteSettings->address }}</p>
+                @else
+                    <p>Add your Google Map iframe from Website Settings.</p>
+                @endif
+
+                @if($websiteSettings->google_map_link)
+                    <a href="{{ $websiteSettings->google_map_link }}"
+                       target="_blank"
+                       class="btn btn-brand btn-sm mt-2">
+                        Open Location
+                        <i class="bi bi-arrow-up-right ms-1"></i>
+                    </a>
+                @endif
             </div>
-          </div>
-        </div>
+
+        @endif
+
+    </div>
+</div>
 
       </div>
     </div>

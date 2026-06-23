@@ -5,14 +5,16 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\ContactEnquiry;
 use Illuminate\Http\Request;
+use App\Models\WebsiteSetting;
 
 class ContactEnquiryController extends Controller
 {
-    public function index(){
+      public function index()
+    {
+        $websiteSettings = WebsiteSetting::current();
 
-
-     return view('frontend.contact');
-}
+        return view('frontend.contact', compact('websiteSettings'));
+    }
 
     public function store(Request $request)
     {

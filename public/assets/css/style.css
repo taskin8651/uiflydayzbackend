@@ -43302,3 +43302,71 @@ html {
 }
 
 /* ===================== FLYDAYZ FOOTER END ===================== */
+
+.fly-map-box {
+  width: 100%;
+  min-height: 430px;
+  overflow: hidden;
+  padding: 0;
+  border-radius: 28px;
+  background: #fff;
+  border: 1px solid rgba(236, 72, 153, 0.12);
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.10);
+}
+
+.fly-map-box iframe {
+  width: 100% !important;
+  height: 430px !important;
+  display: block;
+  border: 0 !important;
+  border-radius: 28px;
+}
+
+.fly-map-empty {
+  min-height: 430px;
+  padding: 40px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.fly-map-empty i {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 30px;
+  background: linear-gradient(135deg, #ec4899, #f97316);
+  box-shadow: 0 18px 40px rgba(236, 72, 153, 0.22);
+}
+
+.fly-map-empty h5 {
+  margin-bottom: 8px;
+  color: #111827;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.fly-map-empty p {
+  max-width: 420px;
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+@media (max-width: 575px) {
+  .fly-map-box,
+  .fly-map-box iframe,
+  .fly-map-empty {
+    min-height: 340px;
+    height: 340px !important;
+    border-radius: 22px;
+  }
+}
