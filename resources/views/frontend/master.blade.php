@@ -106,67 +106,77 @@
         <div id="mainNav" class="collapse navbar-collapse myfly-menu-wrap">
           <ul class="navbar-nav ms-auto align-items-lg-center myfly-menu">
 
-            <li class="nav-item">
-              <a class="nav-link myfly-link active" href="{{ route('home') }}">
-                Home
-              </a>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link myfly-link {{ request()->routeIs('home') ? 'active' : '' }}"
+           href="{{ route('home') }}">
+            Home
+        </a>
+    </li>
 
-            <li class="nav-item">
-              <a class="nav-link myfly-link" href="{{ route('products') }}">
-                Products
-              </a>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link myfly-link {{ request()->routeIs('products', 'products.*') ? 'active' : '' }}"
+           href="{{ route('products') }}">
+            Products
+        </a>
+    </li>
 
-            <li class="nav-item">
-              <a class="nav-link myfly-link" href="{{ route('technology') }}">
-                Technology
-              </a>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link myfly-link {{ request()->routeIs('technology') ? 'active' : '' }}"
+           href="{{ route('technology') }}">
+            Technology
+        </a>
+    </li>
 
-            <li class="nav-item">
-              <a class="nav-link myfly-link" href="{{ route('whychoose') }}">
-                Why Us
-              </a>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link myfly-link {{ request()->routeIs('whychoose') ? 'active' : '' }}"
+           href="{{ route('whychoose') }}">
+            Why Us
+        </a>
+    </li>
 
-            <li class="nav-item">
-              <a class="nav-link myfly-link" href="{{ route('downloads') }}">
-                Download Catalogue
-              </a>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link myfly-link {{ request()->routeIs('downloads') ? 'active' : '' }}"
+           href="{{ route('downloads') }}">
+            Download Catalogue
+        </a>
+    </li>
 
-            <li class="nav-item">
-              <a class="nav-link myfly-link" href="{{ route('certificates') }}">
-                Our Certifications
-              </a>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link myfly-link {{ request()->routeIs('certificates') ? 'active' : '' }}"
+           href="{{ route('certificates') }}">
+            Our Certifications
+        </a>
+    </li>
 
-            <li class="nav-item">
-              <a class="nav-link myfly-link" href="{{ route('reviews') }}">
-                Reviews
-              </a>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link myfly-link {{ request()->routeIs('reviews') ? 'active' : '' }}"
+           href="{{ route('reviews') }}">
+            Reviews
+        </a>
+    </li>
 
-            <li class="nav-item">
-              <a class="nav-link myfly-link" href="{{ route('blog.index') }}">
-                Blog
-              </a>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link myfly-link {{ request()->routeIs('blog.index', 'blog.*') ? 'active' : '' }}"
+           href="{{ route('blog.index') }}">
+            Blog
+        </a>
+    </li>
 
-            <li class="nav-item">
-              <a class="nav-link myfly-link" href="{{ route('careers') }}">
-                Career
-              </a>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link myfly-link {{ request()->routeIs('careers') ? 'active' : '' }}"
+           href="{{ route('careers') }}">
+            Career
+        </a>
+    </li>
 
-            <li class="nav-item">
-              <a class="nav-link myfly-link" href="{{ route('contact') }}">
-                Contact
-              </a>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link myfly-link {{ request()->routeIs('contact') ? 'active' : '' }}"
+           href="{{ route('contact') }}">
+            Contact
+        </a>
+    </li>
 
-          </ul>
+</ul>
 
           <!-- CTA -->
           <div class="myfly-actions">
