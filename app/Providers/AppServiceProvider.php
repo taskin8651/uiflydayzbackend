@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('frontend.*', function ($view) {
+        View::composer(['frontend.*', 'auth.*', 'layouts.app'], function ($view) {
             $view->with('websiteSettings', WebsiteSetting::current());
         });
     }

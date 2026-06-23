@@ -1,47 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ trans('panel.site_title') }}</title>
-
-    {{-- Tailwind --}}
-    <script src="https://cdn.tailwindcss.com"></script>
-    {{-- Font Awesome --}}
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-    {{-- Select2 / Dropzone (agar login page me kabhi use ho) --}}
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css">
-
-    @yield('styles')
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>{{ $websiteSettings->website_name }} | {{ trim($__env->yieldContent('title', 'Account')) }}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box}body{margin:0;font-family:'Plus Jakarta Sans',sans-serif;color:#20172c;background:#fff7fb}.auth-shell{position:relative;display:grid;place-items:center;min-height:100vh;overflow:hidden;padding:26px}.auth-shell:before,.auth-shell:after{content:'';position:absolute;border-radius:50%;filter:blur(2px)}.auth-shell:before{width:500px;height:500px;top:-250px;left:-150px;background:rgba(232,51,138,.18)}.auth-shell:after{width:550px;height:550px;right:-220px;bottom:-300px;background:rgba(125,67,238,.16)}.auth-wrap{position:relative;z-index:1;width:min(100%,1010px);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;border:1px solid rgba(232,51,138,.15);border-radius:28px;background:#fff;box-shadow:0 28px 75px rgba(65,24,68,.16)}.auth-brand{position:relative;overflow:hidden;padding:58px 48px;color:#fff;background:linear-gradient(145deg,#e8338a,#7d43ee 63%,#086cac)}.auth-brand:after{content:'';position:absolute;width:330px;height:330px;border:48px solid rgba(255,255,255,.1);border-radius:50%;right:-150px;bottom:-175px}.auth-brand>*{position:relative;z-index:1}.auth-logo{display:block;max-width:165px;max-height:64px;object-fit:contain;object-position:left}.auth-brand h1{margin:45px 0 12px;font-size:clamp(2rem,4vw,3rem);line-height:1.12;letter-spacing:-.05em}.auth-brand p{max-width:340px;margin:0;color:rgba(255,255,255,.86);font-size:14px;line-height:1.75}.auth-points{display:grid;gap:15px;margin-top:35px}.auth-point{display:flex;gap:11px;align-items:center;font-size:13px;font-weight:700}.auth-point i{display:grid;place-items:center;width:29px;height:29px;border-radius:9px;background:rgba(255,255,255,.16)}.auth-panel{padding:47px 45px}.auth-panel h2{margin:0;color:#24172f;font-size:25px;font-weight:800;letter-spacing:-.04em}.auth-panel>p{margin:7px 0 27px;color:#756a80;font-size:13px}.auth-field{margin-bottom:18px}.auth-field label{display:block;margin-bottom:7px;color:#4c4054;font-size:12px;font-weight:800}.auth-input-wrap{position:relative}.auth-input-wrap>i{position:absolute;top:50%;left:14px;transform:translateY(-50%);color:#b0256c}.auth-input{width:100%;padding:13px 14px 13px 42px;border:1px solid #eadbe4;border-radius:12px;outline:0;background:#fff;color:#271a31;font:inherit;font-size:13px}.auth-input:focus{border-color:#e8338a;box-shadow:0 0 0 4px rgba(232,51,138,.11)}.auth-error{margin:7px 0 0;color:#c52273;font-size:11px;font-weight:700}.auth-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:22px 0}.auth-check{display:flex;align-items:center;gap:7px;color:#756a80;font-size:12px}.auth-link{color:#b0256c;text-decoration:none;font-size:12px;font-weight:800}.auth-submit{width:100%;padding:13px;border:0;border-radius:12px;color:#fff;background:linear-gradient(135deg,#e8338a,#7d43ee);box-shadow:0 12px 22px rgba(159,38,119,.2);font:inherit;font-size:13px;font-weight:800;cursor:pointer}.auth-submit:hover{transform:translateY(-1px)}.auth-switch{margin:22px 0 0;text-align:center;color:#756a80;font-size:12px}.auth-alert{margin:0 0 18px;padding:11px 13px;border:1px solid #ecd4e0;border-radius:10px;color:#a32061;background:#fff3f8;font-size:12px}@media(max-width:760px){.auth-shell{padding:15px}.auth-wrap{grid-template-columns:1fr;max-width:500px}.auth-brand{padding:30px}.auth-brand h1,.auth-brand p,.auth-points{display:none}.auth-panel{padding:34px 27px}.auth-logo{max-height:45px}}
+  </style>@yield('styles')
 </head>
-
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-
-    {{-- LOGIN CARD --}}
-    <div class="w-full max-w-md bg-white rounded-lg shadow-lg p-6">
-
-        {{-- LOGO / TITLE --}}
-        <div class="text-center mb-6">
-            <h1 class="text-2xl font-bold text-gray-800">
-                {{ trans('panel.site_title') }}
-            </h1>
-            <p class="text-sm text-gray-500">
-                Login to continue
-            </p>
-        </div>
-
-        {{-- CONTENT --}}
-        @yield('content')
-
-    </div>
-
-    @yield('scripts')
-</body>
-
+<body><main class="auth-shell"><div class="auth-wrap"><aside class="auth-brand"><a href="{{ route('home') }}"><img class="auth-logo" src="{{ $websiteSettings->header_logo_url }}" alt="{{ $websiteSettings->website_name }}"></a><h1>Care that feels<br>confident.</h1><p>{{ $websiteSettings->tagline ?: 'Premium care, thoughtful protection and everyday confidence.' }}</p><div class="auth-points"><div class="auth-point"><i class="bi bi-shield-check"></i> Secure account access</div><div class="auth-point"><i class="bi bi-heart-pulse"></i> Made for everyday care</div><div class="auth-point"><i class="bi bi-stars"></i> {{ $websiteSettings->website_name }} experience</div></div></aside><section class="auth-panel">@yield('content')</section></div></main>@yield('scripts')</body>
 </html>
