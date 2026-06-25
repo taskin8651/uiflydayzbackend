@@ -1002,7 +1002,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Visitor Counter (Local Browser)
+// Visitor Counter
 
 /* =========================================================
    FOOTER YEAR AND VISITOR COUNTER
@@ -1030,47 +1030,15 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  const visitorStorageKey =
-    "flydayz_total_visitors";
-
-  const visitorSessionKey =
-    "flydayz_current_session_counted";
-
-  const startingVisitorCount = 1250;
-
-  let visitorCount =
+  const visitorCount =
     Number.parseInt(
-      localStorage.getItem(visitorStorageKey),
+      visitorCountElement.dataset.count ||
+        visitorCountElement.textContent.replace(/\D/g, ""),
       10
     );
 
-  /*
-   * Missing ya invalid value par default count.
-   */
-  if (
-    !Number.isFinite(visitorCount) ||
-    visitorCount < startingVisitorCount
-  ) {
-    visitorCount = startingVisitorCount;
-  }
-
-  /*
-   * Ek browser session me ek baar count increase.
-   */
-  if (
-    !sessionStorage.getItem(visitorSessionKey)
-  ) {
-    visitorCount += 1;
-
-    localStorage.setItem(
-      visitorStorageKey,
-      String(visitorCount)
-    );
-
-    sessionStorage.setItem(
-      visitorSessionKey,
-      "true"
-    );
+  if (!Number.isFinite(visitorCount)) {
+    return;
   }
 
   animateFooterVisitorCount(
@@ -1084,12 +1052,12 @@ function animateFooterVisitorCount(
   element,
   finalCount
 ) {
-  const animationDuration = 800;
+  const animationDuration = 2600;
 
   const startingValue =
     Math.max(
       0,
-      finalCount - 25
+      finalCount - 40
     );
 
   const startTime =

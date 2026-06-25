@@ -87,6 +87,21 @@ class WebsiteSetting extends Model implements HasMedia
         return 'https://wa.me/' . $number . ($message ? '?text=' . urlencode($message) : '');
     }
 
+    public function getAddressMapUrlAttribute(): string
+    {
+        if (!empty($this->google_map_link)) {
+            return $this->google_map_link;
+        }
+
+        $address = trim((string) $this->address);
+
+        if ($address === '') {
+            return '#';
+        }
+
+        return 'https://www.google.com/maps/search/?api=1&query=' . urlencode($address);
+    }
+
     public static function current()
     {
         $setting = self::query()->first();

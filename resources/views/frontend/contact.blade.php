@@ -410,6 +410,20 @@
             </div>
 
             <div class="location-row">
+              <div class="location-icon"><i class="bi bi-geo-alt-fill"></i></div>
+              <div>
+                <h6>Address</h6>
+                @if($websiteSettings->address)
+                  <a href="{{ $websiteSettings->address_map_url }}" target="_blank" rel="noopener">
+                    {!! nl2br(e($websiteSettings->address)) !!}
+                  </a>
+                @else
+                  <span>Add address from Website Settings</span>
+                @endif
+              </div>
+            </div>
+
+            <div class="location-row">
               <div class="location-icon"><i class="bi bi-whatsapp"></i></div>
               <div>
                 <h6>WhatsApp</h6>
@@ -438,9 +452,10 @@
                     <p>Add your Google Map iframe from Website Settings.</p>
                 @endif
 
-                @if($websiteSettings->google_map_link)
-                    <a href="{{ $websiteSettings->google_map_link }}"
+                @if($websiteSettings->address)
+                    <a href="{{ $websiteSettings->address_map_url }}"
                        target="_blank"
+                       rel="noopener"
                        class="btn btn-brand btn-sm mt-2">
                         Open Location
                         <i class="bi bi-arrow-up-right ms-1"></i>
